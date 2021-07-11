@@ -2,7 +2,8 @@ import { ImageDataLike } from 'gatsby-plugin-image'
 
 export interface WorkProps {
   title: string
-  lead: string
+  lead?: string
+  date: Date
   url: string
   featuredImage: ImageDataLike
   status: {
