@@ -1,0 +1,3 @@
+{
+  "extends": ["config:base", "group:nodeJs", "group:definitelyTyped"]
+}
