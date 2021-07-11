@@ -12,7 +12,7 @@ const ArchivePage: React.FC<PostsQueryProps> = ({ data }) => (
       </Heading>
       {data.allMarkdownRemark.nodes.map((post) => (
         <Box key={post.fields.slug} fontSize={{ base: 'md', md: 'lg' }} py={1}>
-          <span>{post.frontmatter.date.split('T')[0]} » </span>
+          <span>{post.frontmatter.date} » </span>
           <Link to={post.fields.slug}>
             <chakra.span
               fontWeight="bold"

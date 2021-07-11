@@ -67,11 +67,9 @@ export const query = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
-      excerpt
       frontmatter {
         title
         date
-        author
         tags
         featuredImage {
           childImageSharp {

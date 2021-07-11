@@ -58,7 +58,6 @@ export const query = graphql`
           title
           lead
           date
-          author
           tags
           featuredImage {
             childImageSharp {
