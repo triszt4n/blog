@@ -28,9 +28,31 @@ interface PostTemplateProps {
   }
 }
 
+export const useUtterances = (commentNodeId: string): void => {
+  React.useEffect(() => {
+    const scriptParentNode = document.getElementById(commentNodeId)
+    if (!scriptParentNode) return undefined
+
+    const script = document.createElement('script')
+    script.src = 'https://utteranc.es/client.js'
+    script.async = true
+    script.setAttribute('repo', 'triszt4n/blog')
+    script.setAttribute('issue-term', 'pathname')
+    script.setAttribute('label', 'comment')
+    script.setAttribute('theme', 'github-light')
+    script.setAttribute('crossorigin', 'anonymous')
+
+    scriptParentNode.appendChild(script)
+    return () => {
+      scriptParentNode.removeChild(scriptParentNode.firstChild as Node)
+    }
+  }, [commentNodeId])
+}
+
 const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
   const post = data.markdownRemark
   const featuredImage = getImage(post.frontmatter.featuredImage)
+  useUtterances('comments')
 
   return (
     <Layout>
@@ -47,8 +69,25 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
             })
           }}
         >
-          <Button colorScheme="orange">Vissza a tetejére</Button>
+          <Button colorScheme="orange">Scroll up</Button>
         </Box>
+        {post.frontmatter.comment && (
+          <>
+            <Box id="comments" />
+            <Box
+              textAlign="right"
+              mt={2}
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                })
+              }}
+            >
+              <Button colorScheme="orange">Scroll up</Button>
+            </Box>
+          </>
+        )}
       </Container>
       <ScrollButton />
     </Layout>
@@ -76,6 +115,7 @@ export const query = graphql`
             gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
           }
         }
+        comment
       }
       fields {
         readingTime {

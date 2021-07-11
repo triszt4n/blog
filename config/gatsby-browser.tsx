@@ -8,6 +8,7 @@ import '@fontsource/ubuntu/500.css'
 import '@fontsource/ubuntu/700.css'
 import { GatsbyBrowser } from 'gatsby'
 import React from 'react'
+import '../src/assets/stylesheets/extras.css'
 import '../src/assets/stylesheets/markdown.css'
 
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({ element }) => <>{element}</>

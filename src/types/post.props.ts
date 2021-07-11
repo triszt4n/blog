@@ -6,4 +6,5 @@ export interface PostProps {
   date: Date
   tags?: Array<string>
   featuredImage: ImageDataLike
+  comment: boolean
 }
