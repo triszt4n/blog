@@ -1,27 +1,37 @@
-import { Box, chakra, Container, Heading } from '@chakra-ui/react'
+import { Box, Flex, Heading, HStack, Link as ChakraLink, Tag } from '@chakra-ui/react'
 import { graphql, Link } from 'gatsby'
 import * as React from 'react'
+import Container from '~components/common/container'
 import Layout from '~components/common/layout'
 import { PostsQueryProps } from './posts'
 
 const ArchivePage: React.FC<PostsQueryProps> = ({ data }) => (
   <Layout>
     <Container>
-      <Heading as="h1" my={6}>
-        Archívum
-      </Heading>
+      <Box my={6}>
+        <Heading fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>Archive</Heading>
+      </Box>
       {data.allMarkdownRemark.nodes.map((post) => (
-        <Box key={post.fields.slug} fontSize={{ base: 'md', md: 'lg' }} py={1}>
-          <span>{post.frontmatter.date} » </span>
-          <Link to={post.fields.slug}>
-            <chakra.span
-              fontWeight="bold"
-              _hover={{ textDecor: 'underline', color: 'tomato', transition: '.2s ease-in-out' }}
-            >
+        <Flex
+          direction={{ base: 'column', sm: 'row' }}
+          key={post.fields.slug}
+          py={{ base: 6, sm: 2 }}
+          fontSize={{ base: 'md', sm: 'lg' }}
+          justifyContent="space-between"
+        >
+          <Flex>
+            <Box>{new Date(post.frontmatter.date).toLocaleDateString('hu-HU')}</Box>
+            <Box px={2}>»</Box>
+            <ChakraLink flex={1} as={Link} to={post.fields.slug}>
               {post.frontmatter.title}
-            </chakra.span>
-          </Link>
-        </Box>
+            </ChakraLink>
+          </Flex>
+          <HStack fontSize={{ base: 'sm', sm: 'md' }} justifyContent="flex-end">
+            {post.frontmatter.tags?.map((tag) => (
+              <Tag key={tag}>#{tag}</Tag>
+            ))}
+          </HStack>
+        </Flex>
       ))}
     </Container>
   </Layout>
@@ -41,8 +51,8 @@ export const query = graphql`
         }
         frontmatter {
           title
-          lead
           date
+          tags
         }
       }
     }

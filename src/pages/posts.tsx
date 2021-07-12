@@ -1,5 +1,5 @@
-import { Box } from '@chakra-ui/react'
-import { graphql } from 'gatsby'
+import { Box, Button, Flex, Heading, Stack, useColorModeValue } from '@chakra-ui/react'
+import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Container from '~components/common/container'
 import Layout from '~components/common/layout'
@@ -27,11 +27,27 @@ const PostsPage: React.FC<PostsQueryProps> = ({ data }) => {
     <>
       <Layout>
         <Container>
-          <Box mt={{ base: 10, md: 20 }}>
-            {data.allMarkdownRemark.nodes.map((post) => (
-              <PostPreview key={post.fields.slug} post={post} />
-            ))}
+          <Box mt={8} mb={16}>
+            <Heading fontSize={{ base: '4xl', sm: '5xl', md: '5xl', lg: '6xl' }}>Blog</Heading>
+            <Box mt={3} fontSize={{ base: 'lg', sm: 'xl', md: '2xl' }} lineHeight="none">
+              Latest news about my studies, career and tech explorations.
+            </Box>
           </Box>
+          <Stack spacing={{ base: 16, sm: 6 }} direction="column">
+            {data.allMarkdownRemark.nodes.map((post, index) => (
+              <PostPreview
+                key={post.fields.slug}
+                post={post}
+                isFirst={index === 0}
+                isLast={index === data.allMarkdownRemark.nodes.length - 1}
+              />
+            ))}
+          </Stack>
+          <Flex justifyContent="flex-end" mt={12}>
+            <Button colorScheme={useColorModeValue('blue', 'yellow')} as={Link} to="/archive">
+              More posts...
+            </Button>
+          </Flex>
         </Container>
       </Layout>
     </>

@@ -2,6 +2,7 @@ import { Box, Button } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import { Utterances } from 'utterances-react-component'
 import Container from '~components/common/container'
 import Layout from '~components/common/layout'
 import ScrollButton from '~components/index/scroll-button'
@@ -28,31 +29,9 @@ interface PostTemplateProps {
   }
 }
 
-export const useUtterances = (commentNodeId: string): void => {
-  React.useEffect(() => {
-    const scriptParentNode = document.getElementById(commentNodeId)
-    if (!scriptParentNode) return undefined
-
-    const script = document.createElement('script')
-    script.src = 'https://utteranc.es/client.js'
-    script.async = true
-    script.setAttribute('repo', 'triszt4n/blog')
-    script.setAttribute('issue-term', 'pathname')
-    script.setAttribute('label', 'comment')
-    script.setAttribute('theme', 'github-light')
-    script.setAttribute('crossorigin', 'anonymous')
-
-    scriptParentNode.appendChild(script)
-    return () => {
-      scriptParentNode.removeChild(scriptParentNode.firstChild as Node)
-    }
-  }, [commentNodeId])
-}
-
 const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
   const post = data.markdownRemark
   const featuredImage = getImage(post.frontmatter.featuredImage)
-  useUtterances('comments')
 
   return (
     <Layout>
@@ -73,7 +52,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
         </Box>
         {post.frontmatter.comment && (
           <>
-            <Box id="comments" />
+            <Utterances repo="triszt4n/blog" theme="github-light" issueTerm="pathname" label="comment" />
             <Box
               textAlign="right"
               mt={2}
