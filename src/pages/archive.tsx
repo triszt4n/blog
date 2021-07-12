@@ -3,10 +3,12 @@ import { graphql, Link } from 'gatsby'
 import * as React from 'react'
 import Container from '~components/common/container'
 import Layout from '~components/common/layout'
-import { PostsQueryProps } from './posts'
+import SEO from '~components/common/seo'
+import { PostsQueryProps } from './blog'
 
 const ArchivePage: React.FC<PostsQueryProps> = ({ data }) => (
   <Layout>
+    <SEO title="Archive" />
     <Container>
       <Box my={6}>
         <Heading fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>Archive</Heading>
