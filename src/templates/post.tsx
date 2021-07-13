@@ -1,11 +1,11 @@
 import { Box, Button } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
-import { getImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { Utterances } from 'utterances-react-component'
 import Container from '~components/common/container'
 import Layout from '~components/common/layout'
 import ScrollButton from '~components/index/scroll-button'
+import PostHeader from '~components/post/post-header'
 import { PostProps } from '~types/post.props'
 
 interface PostTemplateProps {
@@ -31,11 +31,11 @@ interface PostTemplateProps {
 
 const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
   const post = data.markdownRemark
-  const featuredImage = getImage(post.frontmatter.featuredImage)
 
   return (
     <Layout>
       <Container>
+        <PostHeader post={{ fields: post.fields, frontmatter: post.frontmatter }} />
         {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <Box

@@ -4,7 +4,7 @@ date: 2021-07-11 19:37:54
 title: 'Trying out Utterances'
 lead: "You can try commenting on this post as I've just added Utterances"
 tags: ['news', 'blog']
-comment: true
+comment: false
 featuredImage: ../images/posts/utterances.png
 ---
 

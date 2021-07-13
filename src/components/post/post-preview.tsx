@@ -17,21 +17,20 @@ type Props = {
     frontmatter: PostProps
   }
   isFirst?: boolean
-  isLast?: boolean
 }
 
-const PostPreview: React.FC<Props> = ({ post, isFirst, isLast }) => {
+const PostPreview: React.FC<Props> = ({ post, isFirst }) => {
   const featuredImage = getImage(post.frontmatter.featuredImage)
   const isMobile = useBreakpointValue({ base: true, sm: false })
 
   return (
-    <Box mb={isFirst && !isMobile ? 12 : 1}>
+    <Box mb={isFirst && !isMobile ? 6 : 1}>
       <Stack spacing={4} direction={{ base: 'column', sm: 'row' }}>
         <Flex flex={1} position="relative" mr={{ base: 0, sm: 2 }} pb={{ base: 2, sm: 0 }}>
           <Box w="full" zIndex={2}>
             <Link to={post.fields.slug}>
               {featuredImage ? (
-                <GatsbyImage image={featuredImage} alt="Blog preview" objectFit="contain" />
+                <GatsbyImage image={featuredImage} alt="Blog preview" objectFit="cover" />
               ) : (
                 <Box rounded="base" w="full" h="full" bgGradient="linear(to-bl, teal.200, purple.300)" />
               )}
@@ -45,23 +44,14 @@ const PostPreview: React.FC<Props> = ({ post, isFirst, isLast }) => {
                 hour: '2-digit',
                 minute: '2-digit',
                 year: 'numeric',
-                month: 'short',
+                month: 'long',
                 day: 'numeric',
-                weekday: 'short'
+                weekday: 'long'
               })}
             </Text>
           </Flex>
           <Box mt={2} flex={1}>
-            <Text
-              as={Link}
-              to={post.fields.slug}
-              fontSize="2xl"
-              fontWeight={700}
-              _hover={{
-                color: useColorModeValue('gray.600', 'gray.200'),
-                textDecor: 'underline'
-              }}
-            >
+            <Text as={Link} to={post.fields.slug} fontSize={isFirst && !isMobile ? '3xl' : '2xl'} fontWeight={700}>
               {post.frontmatter.title}
             </Text>
             <Box mt={2} textColor={useColorModeValue('gray.600', 'gray.400')}>
@@ -84,9 +74,6 @@ const PostPreview: React.FC<Props> = ({ post, isFirst, isLast }) => {
           </HStack>
         </Flex>
       </Stack>
-      {!isFirst && !isMobile && !isLast && (
-        <Box mt={6} h="0.1rem" w="full" bgColor={useColorModeValue('gray.200', 'gray.700')} />
-      )}
     </Box>
   )
 }

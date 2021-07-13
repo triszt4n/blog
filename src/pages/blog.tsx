@@ -33,14 +33,9 @@ const PostsPage: React.FC<PostsQueryProps> = ({ data }) => (
           Latest news about my studies, career and tech explorations.
         </Box>
       </Box>
-      <Stack spacing={{ base: 16, sm: 6 }} direction="column">
+      <Stack spacing={{ base: 16, sm: 12 }} direction="column">
         {data.allMarkdownRemark.nodes.map((post, index) => (
-          <PostPreview
-            key={post.fields.slug}
-            post={post}
-            isFirst={index === 0}
-            isLast={index === data.allMarkdownRemark.nodes.length - 1}
-          />
+          <PostPreview key={post.fields.slug} post={post} isFirst={index === 0} />
         ))}
       </Stack>
       <Flex justifyContent="flex-end" mt={12}>

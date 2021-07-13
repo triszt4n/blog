@@ -14,7 +14,7 @@ const theme = {
         fontWeight: 500,
         _hover: {
           textDecoration: 'underline',
-          color: props.colorMode === 'light' ? 'blue.700' : 'yellow.600'
+          color: props.colorMode === 'light' ? 'blue.700' : 'yellow.500'
         }
       })
     }

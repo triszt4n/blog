@@ -1,4 +1,4 @@
-import { Box, Heading, Link as ChakraLink, Text, Tooltip, useClipboard } from '@chakra-ui/react'
+import { Box, Heading, Link as ChakraLink, Stack, Text, Tooltip, useClipboard } from '@chakra-ui/react'
 import { useLocation } from '@reach/router'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -26,11 +26,11 @@ const DbPage: React.FC<PostsQueryProps> = ({ data }) => {
             elérési útvonalon érhető el, navigáció elől rejtett.
           </Text>
         </Box>
-        <Box mt={4}>
+        <Stack mt={4} spacing={{ base: 16, sm: 12 }} direction="column">
           {data.allMarkdownRemark.nodes.map((post) => (
             <PostPreview key={post.fields.slug} post={post} />
           ))}
-        </Box>
+        </Stack>
       </Container>
     </Layout>
   )
