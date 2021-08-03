@@ -32,7 +32,7 @@ const PostPreview: React.FC<Props> = ({ post, isFirst }) => {
               {featuredImage ? (
                 <GatsbyImage image={featuredImage} alt="Blog preview" objectFit="cover" />
               ) : (
-                <Box rounded="base" w="full" h="full" bgGradient="linear(to-bl, teal.200, purple.300)" />
+                <Box rounded="base" w="full" h="full" bgGradient="linear(to-bl, teal.200, blue.400)" />
               )}
             </Link>
           </Box>
