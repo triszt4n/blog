@@ -24,6 +24,10 @@ featuredImage: null
 exclude: Tartalomjegyzék
 ```
 
+# Disclaimer
+
+> Lentebb elég sokszor olvashattok megjegyzéseket olyan stílusban, ahogy ez a megjegyzés is íródott. Ezeket abszolúte nem kötelező elolvasni és főleg nem kötelező bennük említett dolgokat megtanulni (kivéve ha amúgy is szó volt róla előadáson), nem kell semminek utánanézni. Csupán azért vannak, ha netán előre érdeklődnétek a dolgok iránt, megfelelően lássátok át a dolgokat, és ha esetleg érdekesnek tűnnek a dolgok, legyen valami extra is, ami fenntartja az érdeklődéseteket. Köszi.
+
 # Miről volt szó előadáson? - elméleti összefoglaló
 
 [Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 1. és 4. fejezet ismerendő a gyakorlatra.
@@ -32,7 +36,7 @@ exclude: Tartalomjegyzék
 
 Az _adatbázis_ = **adat** + bázis, ebből főleg az adattal foglalkoztatok eddig, és hogy azt hogy logikus rendezni. A bázis része már az, amikor az adatot meghonosítjuk, annak struktúrát és akár matematikai keretet adunk. Nem fontos, nézzük mi fontos:
 
-> Adat > Információ > Tudás > Hatalom. Ismerős lehet a felsorolás, igaz?
+Adat > Információ > Tudás > Hatalom. Ismerős lehet a felsorolás, igaz?
 
 Az adat ugyebár - józan ésszel - az egy: ✨ _dolog_ ✨, ami önmagában nem értelmes, csak _valami_ a világból. A mi feladatunk ezeket az adatokat úgy tárolni és úgy kapcsolatba hozni más adatokkal _(lásd később [DBMS](#dbms))_, hogy az később minden fejlesztő számára _először_: értelmezhető legyen (információ), _aztán_: könnyen kontextusba helyezhető legyen (tudás). A fenti felsorolás értelmet nyert.
 
@@ -53,19 +57,21 @@ Ha már szoftveresen tároljuk az adatot, akkor lehessen:
 
 <div class="caption">DBMS: jelenleg csak az ábra sötétkék egységeivel foglalkozunk</div>
 
-Fenti képen is látható, amikor a tervező készen áll - és helyesnek tartja - [ER diagramját](#erd), akkor azt sémaleírásba foglalja a DBMS által használt _DDL_ nyelven (Data Definition Language, pl.: SQL).
+Fenti képen is látható, amikor a tervező készen áll - és helyesnek tartja - [ER diagramját](#erd), akkor azt sémaleírásba foglalja a DBMS által használt _DDL_ nyelven (Data Definition Language, pl.: SQL). Ezt a _Séma feldolgozó_ pedig lefordítja saját magának (fel is tölti az *adatszótár*ba), és amikor a _DB menedzsernek_ szüksége van a sémákra, akkor innen kéri ki azokat.
+
+> **Fun fact**: az _SQL (Structured Query Language)_ - amelyet a laborokon is meg fogtok ismerni - egyszerre _DML_ (Data Manipulation Language) és DDL nyelv (és még annál is több, érdekességek a _könyv 5.4 alfejezetében_), azaz ahogy az ábrán is látható, képes adatlekéréseket is intézni DBMS-ekbe. Tipp: ha laborokon kevésbé szívesen kínoznátok a BME-s adatbázis szervert, akkor vannak különféle SQL playgroundok a neten, ahol tesztelhetitek az SQL kódotokat (és esetleg értelmesebb hibakódokat tudtok visszakapni, mint egy átlag Oracle környezetben), linkek: [példa1](http://sqlfiddle.com/#!4), [példa2](https://livesql.oracle.com/).
 
 ### DB menedzser feladatkörei
 
 Az úgy tök okés, hogy a _Lekérdezés feldolgozó_ megküldi a DB menedzser felé a hiperszuper optimális kiértékelési tervet - ami ugye igazából egy elemi szinten leírt utasítássorozat -, az még egyáltalán nem biztos, hogy azt a DB menedzsernek muszáj csak úgy parancs-értettem módra elfogadni és kikotorni/betenni a fizikai adatbázisból a szükséges adatokat, amiket kértek. A következőkre muszáj még figyelnie a DB menedzsernek:
 
-- **Adatbiztonság**: az adat érték, muszáj vigyázni arra, nehogy elvesszen
-- **Adatvédelem**: jogosultságköröket kezel, nehogy rossz kezekbe kerülhessen az adat
-- **Szinkronitás**: mivel akár többen is küldhetnek kérést egyszerre, illetve akár térben elosztott is lehet a fizikai adatbázis, muszáj arra figyelni, hogy a kérések megfelelő szinkronitás mellett futhassanak be és kerüljenek kiszolgálásra, nehogy ütközés vagy egyéb legyen. (lásd később _Tranzakciók (könyv 10. fejezet)_)
+- **Adatbiztonság**: az adat érték, muszáj vigyázni arra, nehogy megsemmisüljön vagy megsérüljön.
+- **Adatvédelem**: jogosultságköröket kezel, nehogy rossz kezekbe kerülhessen az adat.
+- **Szinkronitás**: mivel akár többen is küldhetnek kérést egyszerre, illetve akár térben elosztott is lehet a fizikai adatbázis, muszáj arra figyelni, hogy a kérések megfelelő szinkronitás mellett (mintha egymás után indítanánk őket) futhassanak be és kerüljenek kiszolgálásra, nehogy ütközés vagy egyéb legyen. (lásd később _Tranzakciók (könyv 10. fejezet)_)
 - **Integritás**: magyarul ellentmondásmentesség. Meg kell vizsgálni, hogy...
-  - ...a **formai ellenőrzés**en átmegy-e
-  - ...a kérés hatására megmarad-e a **referenciális integritás** (amikor egymással kapcsolatban vannak a dolgok)
-  - ...a kérés hatására megmarad-e a **strukturális integritás** (azaz a kényszerek pl.: ne legyen üres valami tulajdonság)
+  - ...a **formai ellenőrzés**en átmegy-e.
+  - ...a kérés hatására megmarad-e a **referenciális integritás** (pl.: ha az egyik helyen csak referálunk egy másik elemre, attól még ugyanazt az értéket kell visszaadniuk).
+  - ...a kérés hatására megmarad-e a **strukturális integritás** (pl.: ne legyen üres valami tulajdonság, ide tartoznak a **kényszerek** is, amelyről majd a _Normalizálás témakörében (könyv: 9.2.2 alalfejezet)_ még bőven tanultok).
 
 ### DBMS modellrétegei
 
@@ -116,12 +122,12 @@ Az ER diagramnak a _műveletek_ a gyengesége. Az igazi adatmodellek: hálós, h
 
 Az ismeretek elsajátításával rájössz, hogy te lehetsz...
 
-- az a fejlesztő, aki a világ - megrendelő által kért - **entitásait**, azok **tulajdonságait** és az entitások közti **kapcsolatokat** okosan\* tervezed meg és azáltal építesz adatbázisokat.
+- az a fejlesztő, aki a világ - megrendelő által kért - **entitásait**, azok **tulajdonságait** és az entitások közti **kapcsolatokat** okosan\* tervezi meg és ezáltal épít adatbázisokat.
 - az a fejlesztő, aki - a DBMS segítségével - ezeket az adatokat lekéri, és információként kínálja fel mondjuk egy weboldalon.
 - az a mérnök, aki új funkcionalitásokat tud beletenni a DBMS-be, okosíthatja az optimalizációt, újíthatja az lekérések és sémadefiníciók nyelvét.
 - az a mérnök, aki új algoritmusokkal oldja meg a rekordok begyűjtését, új fizikai adatstruktúrákkal rukkolhat elő a fizikai állományok rendezésére.
 
-> *Az, hogy hogy lehet *okosan* tervezni adatbázisokat, később, az *Relációs lekérdezések optimalizációja (könyv: 6. fejezet)* és *Relációs sématervezés normalizálással (könyv: 9. fejezet)\* témájú előadásokon találkozhatsz.
+> \*Az, hogy hogy lehet _okosan_ tervezni adatbázisokat, később, a _Relációs lekérdezések optimalizációja (könyv: 6. fejezet)_ és _Relációs sématervezés normalizálással (könyv: 9. fejezet)_ témájú előadásokon találkozhatsz.
 
 # Feladatsor
 
@@ -138,9 +144,23 @@ Az ismeretek elsajátításával rájössz, hogy te lehetsz...
    - b) Az ER diagramban tároljuk a munkaviszonyok, hallgatói jogviszonyok kezdetét is.
 1. Egy lízing-szerződés kapcsán a kereskedő átadja a kocsit az ügyfélnek, a kocsit a bank fizeti ki a kereskedőnek és az ügyfél pedig a banknak törleszt. Milyen módokon lehet ábrázolni ER diagrammal? Melyiknek mi az előnye és a hátránya?
 
+**Zárógondolat**: A jövő gyakorlatra érdemes lehet úgy készülni, hogy...
+
+- vagy elmész előadásra
+- vagy elolvasod a könyv szükséges fejezeteit
+- vagy megnézed a [következő poszt elméleti összefoglalóját](/db/2021-08-??-adatb-2-gyakorlat#elméleti-összefoglaló)
+
+## Házi feladat
+
+Nem kötelező jelleggel, csupán mert ZH-szagú feladat: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 217. oldal, 4. feladat
+
+Ha találtok egyéb feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu) No stress.
+
 ## Megoldások
 
 #TODO kommentezhető <\!\-\- \-\-\> -vel
+
+Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 233. oldal
 
 # Extra gondolatok
 
