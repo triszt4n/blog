@@ -1,40 +1,32 @@
-import { Box, Heading, Link as ChakraLink, Stack, Text, Tooltip, useClipboard } from '@chakra-ui/react'
-import { useLocation } from '@reach/router'
+import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
+import { FaDatabase } from 'react-icons/fa'
 import Container from '~components/common/container'
 import Layout from '~components/common/layout'
 import SEO from '~components/common/seo'
 import PostPreview from '~components/post/post-preview'
 import { PostsQueryProps } from './blog'
 
-const DbPage: React.FC<PostsQueryProps> = ({ data }) => {
-  const { href } = useLocation()
-  const { onCopy, hasCopied } = useClipboard(href)
-  return (
-    <Layout>
-      <SEO title="Adatb" />
-      <Container>
-        <Box my={6}>
-          <Heading fontSize={{ base: '3xl', sm: '5xl', md: '6xl' }}>Gyakorlat posztok</Heading>
-          <Text mt={4} fontSize={{ base: 'md', sm: 'lg' }}>
-            Ez az oldal az Adatbázisok VITMAB04 tárgy általam vezett gyakorlatának segédleteit gyűjti össze posztok
-            formájában. Csupán a{' '}
-            <Tooltip hasArrow closeOnClick closeDelay={500} label={hasCopied ? 'Másolva!' : 'Kattints a másoláshoz'}>
-              <ChakraLink onClick={onCopy}>{href}</ChakraLink>
-            </Tooltip>{' '}
-            elérési útvonalon érhető el, navigáció elől rejtett.
-          </Text>
-        </Box>
-        <Stack mt={4} spacing={{ base: 16, sm: 12 }} direction="column">
-          {data.allMarkdownRemark.nodes.map((post) => (
-            <PostPreview key={post.fields.slug} post={post} />
-          ))}
-        </Stack>
-      </Container>
-    </Layout>
-  )
-}
+const DbPage: React.FC<PostsQueryProps> = ({ data }) => (
+  <Layout>
+    <SEO title="Adatb" />
+    <Container>
+      <Box my={6}>
+        <Heading fontSize={{ base: '3xl', sm: '5xl', md: '6xl' }}>Gyakorlat posztok</Heading>
+        <Text mt={4} fontSize={{ base: 'md', sm: 'lg' }}>
+          Ez az oldal az Adatbázisok VITMAB04 tárgy általam vezett gyakorlatának segédleteit gyűjti össze posztok
+          formájában.A fenti <FaDatabase /> gomb által juthattok erre az oldalra.
+        </Text>
+      </Box>
+      <Stack mt={4} spacing={{ base: 16, sm: 12 }} direction="column">
+        {data.allMarkdownRemark.nodes.map((post) => (
+          <PostPreview key={post.fields.slug} post={post} />
+        ))}
+      </Stack>
+    </Container>
+  </Layout>
+)
 
 export default DbPage
 
