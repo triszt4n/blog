@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import React from 'react'
 import { FaBars, FaDatabase, FaGithub, FaMoon, FaTimes } from 'react-icons/fa'
 import { FiSun } from 'react-icons/fi'
+import { GITHUB_URL, SHOW_DB_BUTTON } from '~utils/configurations'
 import DesktopNav from './desktop'
 import MobileNav from './mobile'
 
@@ -28,16 +29,18 @@ const Navbar: React.FC = () => {
           </Flex>
         </Flex>
         <Flex>
-          <IconButton
-            as={Link}
-            to="/db"
-            aria-label="Open DB posts"
-            icon={<FaDatabase size="1.5rem" />}
-            variant="ghost"
-          />
+          {SHOW_DB_BUTTON && (
+            <IconButton
+              as={Link}
+              to="/db"
+              aria-label="Open DB posts"
+              icon={<FaDatabase size="1.5rem" />}
+              variant="ghost"
+            />
+          )}
           <IconButton
             as="a"
-            href="https://github.com/triszt4n"
+            href={GITHUB_URL}
             aria-label="Open Github profile"
             icon={<FaGithub size="1.5rem" />}
             variant="ghost"
