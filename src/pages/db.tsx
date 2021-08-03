@@ -16,7 +16,7 @@ const DbPage: React.FC<PostsQueryProps> = ({ data }) => (
         <Heading fontSize={{ base: '3xl', sm: '5xl', md: '6xl' }}>Gyakorlat posztok</Heading>
         <Text mt={4} fontSize={{ base: 'md', sm: 'lg' }}>
           Ez az oldal az Adatbázisok VITMAB04 tárgy általam vezett gyakorlatának segédleteit gyűjti össze posztok
-          formájában.A fenti <FaDatabase /> gomb által juthattok erre az oldalra.
+          formájában. A fenti <FaDatabase style={{ display: 'inline-block' }} /> gomb által juthattok erre az oldalra.
         </Text>
       </Box>
       <Stack mt={4} spacing={{ base: 16, sm: 12 }} direction="column">
