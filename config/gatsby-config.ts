@@ -31,6 +31,14 @@ export default {
   plugins: [
     '@chakra-ui/gatsby-plugin',
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',

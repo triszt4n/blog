@@ -17,7 +17,8 @@
     "paths": {
       "~types/*": ["types/*"],
       "~components/*": ["components/*"],
-      "~utils/*": ["utils/*"]
+      "~utils/*": ["utils/*"],
+      "~assets/*": ["assets/*"]
     }
   },
   "include": ["./src/**/*"]
