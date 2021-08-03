@@ -55,14 +55,34 @@ Ha már szoftveresen tároljuk az adatot, akkor lehessen:
 
 Fenti képen is látható, amikor a tervező készen áll - és helyesnek tartja - [ER diagramját](#erd), akkor azt sémaleírásba foglalja a DBMS által használt _DDL_ nyelven (Data Definition Language, pl.: SQL).
 
+### DB menedzser feladatkörei
+
+Az úgy tök okés, hogy a _Lekérdezés feldolgozó_ megküldi a DB menedzser felé a hiperszuper optimális kiértékelési tervet - ami ugye igazából egy elemi szinten leírt utasítássorozat -, az még egyáltalán nem biztos, hogy azt a DB menedzsernek muszáj csak úgy parancs-értettem módra elfogadni és kikotorni/betenni a fizikai adatbázisból a szükséges adatokat, amiket kértek. A következőkre muszáj még figyelnie a DB menedzsernek:
+
+- **Adatbiztonság**: az adat érték, muszáj vigyázni arra, nehogy elvesszen
+- **Adatvédelem**: jogosultságköröket kezel, nehogy rossz kezekbe kerülhessen az adat
+- **Szinkronitás**: mivel akár többen is küldhetnek kérést egyszerre, illetve akár térben elosztott is lehet a fizikai adatbázis, muszáj arra figyelni, hogy a kérések megfelelő szinkronitás mellett futhassanak be és kerüljenek kiszolgálásra, nehogy ütközés vagy egyéb legyen. (lásd később _Tranzakciók (könyv 10. fejezet)_)
+- **Integritás**: magyarul ellentmondásmentesség. Meg kell vizsgálni, hogy...
+  - ...a **formai ellenőrzés**en átmegy-e
+  - ...a kérés hatására megmarad-e a **referenciális integritás** (amikor egymással kapcsolatban vannak a dolgok)
+  - ...a kérés hatására megmarad-e a **strukturális integritás** (azaz a kényszerek pl.: ne legyen üres valami tulajdonság)
+
+### DBMS modellrétegei
+
+Amikor egy DBMS működéséről beszélünk úgy általában, érdemesebb annak modelljét egy rétegmodellel ábrázolni az egyszerűség kedvéért:
+
+- Nézetek (+ külső séma)
+- Logikai adatbázis (+ séma)
+- Fizikai adatbázis
+
 ## ERD
 
-ERD = Entity-Relation Diagram, azaz entitás-kapcsolat diagram - adatmodellezési nyelv. Illetve csak majdnem. Ugyanis tudjuk, hogy egy jó adatmodell két dologból áll:
+ERD = Entity-Relation Diagram, azaz entitás-kapcsolat diagram - adatmodellezési nyelv. Illetve csak majdnem. Ugyanis tudjuk, hogy egy **jó adatmodell két dologból áll**:
 
 - Formális jelölőrendszer (adatokra, kapcsolatukra) ✅
 - Műveleteket definiál az adatokon ❌
 
-Az ER diagramnak a _műveletek_ a gyengesége.
+Az ER diagramnak a _műveletek_ a gyengesége. Az igazi adatmodellek: hálós, hierarchikus, obj. orientált és a relációs. Ezek közül a legfontosabbal (és egyben a legelterjedtebbel), a _relációssal_ fogtok majd később megismekedni jó sokáig _(könyv: 5., 6., 9. fejezetek)_.
 
 ### Jelölőrendszere
 
@@ -127,3 +147,5 @@ Az ismeretek elsajátításával rájössz, hogy te lehetsz...
 > **Adatbázisok érdekességei:** Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eket (Relational DBMS), tarthatnak érdekességeket.
 
 > **Jótanács:** Ne feledjétek, nem a tantárgy nehéz, maximum sok az akadály, amivel meg kell küzdeni. Ha megfelelő prioritást adtok a tantárgynak, bőven kellemes csalódást fog hozni a jegy, amit elértek (a küzdelem viszont nyeh, fáj, tudom). Érdemes lehet gyakorlat előtt elolvasod a könyv előadáshoz tartozó részét (azért nem kell bemagolni, elég 1 olvasás), és labor előtt pedig ugyanezt mégegyszer megtenni (laborra nem kell a gyakorlat anyaga). A laborfeladatokat otthon is be tudod fejezni, ha a laboron nem sikerül időben, a labor általában hosszadalmas, de tanulságos (és az SQL-ezés már közel szakmai, szóval az jó buli), azonban mindig figyelj a határidőkre!
+
+> **Rólam:** Az itt olvasható elméléti összefoglalók inkább a megértésre íródtak, kevésbé az alaposság jegyében, inkább a konyhanyelvet alkalmazva. Érdemes lehet - ismételten mondva - a könyvet azért jól átbogarászni egy vizsga előtt, de természetesen amit itt olvastok, elfogadom a vizsgán is. **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).**

@@ -53,17 +53,18 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
         {post.frontmatter.comment && (
           <>
             <Utterances repo="triszt4n/blog" theme="github-light" issueTerm="pathname" label="comment" />
-            <Box
-              textAlign="right"
-              mt={2}
-              onClick={() => {
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth'
-                })
-              }}
-            >
-              <Button colorScheme="orange">Scroll up</Button>
+            <Box textAlign="right" mt={2}>
+              <Button
+                colorScheme="orange"
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  })
+                }}
+              >
+                Scroll up
+              </Button>
             </Box>
           </>
         )}

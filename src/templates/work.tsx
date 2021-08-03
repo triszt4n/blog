@@ -35,17 +35,18 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ data }) => {
           {/* eslint-disable-next-line react/no-danger */}
           <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
         </Box>
-        <Box
-          textAlign="right"
-          mt={10}
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            })
-          }}
-        >
-          <Button colorScheme="orange">Vissza a tetejére</Button>
+        <Box textAlign="right" mt={10}>
+          <Button
+            colorScheme="orange"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              })
+            }}
+          >
+            Vissza a tetejére
+          </Button>
         </Box>
       </Container>
       <ScrollButton />
