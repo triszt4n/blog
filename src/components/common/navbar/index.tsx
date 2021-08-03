@@ -1,6 +1,7 @@
 import { Box, Collapse, Flex, IconButton, useColorMode, useColorModeValue, useDisclosure } from '@chakra-ui/react'
+import { Link } from 'gatsby'
 import React from 'react'
-import { FaBars, FaGithub, FaMoon, FaTimes } from 'react-icons/fa'
+import { FaBars, FaDatabase, FaGithub, FaMoon, FaTimes } from 'react-icons/fa'
 import { FiSun } from 'react-icons/fi'
 import DesktopNav from './desktop'
 import MobileNav from './mobile'
@@ -27,6 +28,13 @@ const Navbar: React.FC = () => {
           </Flex>
         </Flex>
         <Flex>
+          <IconButton
+            as={Link}
+            to="/db"
+            aria-label="Open DB posts"
+            icon={<FaDatabase size="1.5rem" />}
+            variant="ghost"
+          />
           <IconButton
             as="a"
             href="https://github.com/triszt4n"
