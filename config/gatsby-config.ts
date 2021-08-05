@@ -14,7 +14,7 @@ export default {
     titleTemplate: '%s | triszt4n.xyz',
     description: "Trisztán Piller's blog and portfolio.",
     author: 'triszt4n',
-    image: '/favicon.png',
+    image: '/favicon.ico',
     keywords: [
       'gatsbyjs',
       'gatsby',
@@ -30,6 +30,14 @@ export default {
   },
   plugins: [
     '@chakra-ui/gatsby-plugin',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

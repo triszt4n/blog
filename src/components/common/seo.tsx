@@ -71,8 +71,8 @@ const SEO: React.FC<SEOProps> = ({
         },
         {
           rel: 'icon',
-          type: 'image/png',
-          href: '/favicon.png'
+          type: 'image/ico',
+          href: '/favicon.ico'
         }
       ].concat(links)}
       meta={[

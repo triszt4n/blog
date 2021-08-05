@@ -25,7 +25,7 @@ const PostHeader: React.FC<Props> = ({ post }) => {
         {featuredImage ? (
           <GatsbyImage image={featuredImage} alt="Blog preview" objectFit="cover" />
         ) : (
-          <Box rounded="base" w="full" h="full" bgGradient="linear(to-bl, teal.200, purple.300)" />
+          <Box rounded="base" w="full" h="full" bgGradient="linear(to-bl, teal.200, blue.400)" />
         )}
       </Box>
       <Flex flex={{ base: 0, sm: 1.5, md: 3, lg: 4 }} direction="column">

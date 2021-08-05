@@ -2,6 +2,7 @@ import { Box, chakra, Stack, useColorModeValue } from '@chakra-ui/react'
 import { useLocation } from '@reach/router'
 import { Link } from 'gatsby'
 import React from 'react'
+import MyLogo from '~assets/images/master.svg'
 import { NAV_ITEMS } from './config'
 
 const DesktopNav: React.FC = () => {
@@ -11,6 +12,9 @@ const DesktopNav: React.FC = () => {
 
   return (
     <Stack direction="row" spacing={10}>
+      <Box my="auto">
+        <MyLogo style={{ width: '32', height: '32' }} />
+      </Box>
       {NAV_ITEMS.map((item) => (
         <Box key={item.label}>
           <Box
