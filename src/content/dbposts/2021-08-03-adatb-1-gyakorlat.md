@@ -26,7 +26,9 @@ exclude: Tartalomjegyzék
 
 # Disclaimer
 
-> Lentebb elég sokszor olvashattok megjegyzéseket olyan stílusban, ahogy ez a megjegyzés is íródott. Ezeket abszolúte nem kötelező elolvasni és főleg nem kötelező bennük említett dolgokat megtanulni (kivéve ha amúgy is szó volt róla előadáson), nem kell semminek utánanézni. Csupán azért vannak, ha netán előre érdeklődnétek a dolgok iránt, megfelelően lássátok át a dolgokat, és ha esetleg érdekesnek tűnnek a dolgok, legyen valami extra is, ami fenntartja az érdeklődéseteket. Köszi.
+> Lentebb elég sokszor olvashattok megjegyzéseket olyan stílusban, ahogy ez a megjegyzés is íródott. Ezeket abszolúte nem kötelező elolvasni és főleg nem kötelező bennük említett dolgokat megtanulni (kivéve ha amúgy is szó volt róla előadáson), nem kell semminek utánanézni. Csupán azért vannak, ha netán előre érdeklődnétek a dolgok iránt, megfelelően lássátok át a dolgokat, és ha esetleg érdekesnek tűnnek a dolgok, legyen valami extra is, ami fenntartja az érdeklődéseteket.
+
+> Az adatb posztok elméléti összefoglalói inkább a megértésre íródtak, kevésbé az alaposság jegyében, inkább konyhanyelvet alkalmazva. Érdemes lehet a könyvet azért jól átbogarászni egy vizsga előtt, de természetesen amit itt olvastok, elfogadom a vizsgán is. **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).** Köszi.
 
 # Miről volt szó előadáson? - elméleti összefoglaló
 
@@ -167,5 +169,3 @@ Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf
 > **Adatbázisok érdekességei:** Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eket (Relational DBMS), tarthatnak érdekességeket.
 
 > **Jótanács:** Ne feledjétek, nem a tantárgy nehéz, maximum sok az akadály, amivel meg kell küzdeni. Ha megfelelő prioritást adtok a tantárgynak, bőven kellemes csalódást fog hozni a jegy, amit elértek (a küzdelem viszont nyeh, fáj, tudom). Érdemes lehet gyakorlat előtt elolvasod a könyv előadáshoz tartozó részét (azért nem kell bemagolni, elég 1 olvasás), és labor előtt pedig ugyanezt mégegyszer megtenni (laborra nem kell a gyakorlat anyaga). A laborfeladatokat otthon is be tudod fejezni, ha a laboron nem sikerül időben, a labor általában hosszadalmas, de tanulságos (és az SQL-ezés már közel szakmai, szóval az jó buli), azonban mindig figyelj a határidőkre!
-
-> **Rólam:** Az itt olvasható elméléti összefoglalók inkább a megértésre íródtak, kevésbé az alaposság jegyében, inkább a konyhanyelvet alkalmazva. Érdemes lehet - ismételten mondva - a könyvet azért jól átbogarászni egy vizsga előtt, de természetesen amit itt olvastok, elfogadom a vizsgán is. **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).**
