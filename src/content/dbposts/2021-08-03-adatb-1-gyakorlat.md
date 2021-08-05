@@ -57,7 +57,9 @@ Ha már szoftveresen tároljuk az adatot, akkor lehessen:
 
 ![dbms](/db/post1/dbms.png)
 
-<div class="caption">DBMS: jelenleg csak az ábra sötétkék egységeivel foglalkozunk</div>
+<div class="caption">ábra: átlag DBMS működési sémaábrája</div>
+
+_Disclaimer_: jelenleg csak az ábra sötétkék egységeivel foglalkozunk.
 
 Fenti képen is látható, amikor a tervező készen áll - és helyesnek tartja - [ER diagramját](#erd), akkor azt sémaleírásba foglalja a DBMS által használt _DDL_ nyelven (Data Definition Language, pl.: SQL). Ezt a _Séma feldolgozó_ pedig lefordítja saját magának (fel is tölti az *adatszótár*ba), és amikor a _DB menedzsernek_ szüksége van a sémákra, akkor innen kéri ki azokat.
 
@@ -95,6 +97,8 @@ Az ER diagramnak a _műveletek_ a gyengesége. Az igazi adatmodellek: hálós, h
 ### Jelölőrendszere
 
 ![](/db/post1/erd.png)
+
+<div class="caption">ábra: ERD jelölőrendszere</div>
 
 - **Kulcs**: az a tulajdonsághalmaz(ok), amely **egyértelműen** azonosítani képes egy entitást. Pl.: a TAJ szám mivel minden személy számára egyedi, jól használható kulcsként önmagában. Aláhúzással jelöljük.
 
