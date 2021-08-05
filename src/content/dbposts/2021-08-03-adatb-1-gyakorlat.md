@@ -8,15 +8,6 @@ comment: false
 featuredImage: null
 ---
 
-<style>
-  .caption {
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: -0.75rem;
-    font-style: italic;
-  }
-</style>
-
 # Tartalomjegyzék
 
 ```toc
@@ -64,6 +55,8 @@ Ha már szoftveresen tároljuk az adatot, akkor lehessen:
 _Disclaimer_: jelenleg csak az ábra sötétkék egységeivel foglalkozunk.
 
 Fenti képen is látható, amikor a tervező készen áll - és helyesnek tartja - [ER diagramját](#erd), akkor azt sémaleírásba foglalja a DBMS által használt _DDL_ nyelven (Data Definition Language, pl.: SQL). Ezt a _Séma feldolgozó_ pedig lefordítja saját magának (fel is tölti az *adatszótár*ba), és amikor a _DB menedzsernek_ szüksége van a sémákra, akkor innen kéri ki azokat.
+
+### SQL
 
 > **Fun fact**: az _SQL (Structured Query Language)_ - amelyet a laborokon is meg fogtok ismerni - egyszerre _DML_ (Data Manipulation Language) és DDL nyelv (és még annál is több, érdekességek a _könyv 5.4 alfejezetében_), azaz ahogy az ábrán is látható, képes adatlekéréseket is intézni DBMS-ekbe. Tipp: ha laborokon kevésbé szívesen kínoznátok a BME-s adatbázis szervert, akkor vannak különféle SQL playgroundok a neten, ahol tesztelhetitek az SQL kódotokat (és esetleg értelmesebb hibakódokat tudtok visszakapni, mint egy átlag Oracle környezetben), linkek: [példa1](http://sqlfiddle.com/#!4), [példa2](https://livesql.oracle.com/).
 
@@ -156,7 +149,7 @@ Az ismeretek elsajátításával rájössz, hogy te lehetsz...
 
 - vagy elmész előadásra
 - vagy elolvasod a könyv szükséges fejezeteit
-- vagy megnézed a [következő poszt elméleti összefoglalóját](/db/2021-08-??-adatb-2-gyakorlat#elméleti-összefoglaló)
+- vagy megnézed a [következő poszt elméleti összefoglalóját](/dbpost/2021-08-05-adatb-2-gyakorlat#elméleti-összefoglaló)
 
 ## Házi feladat
 
