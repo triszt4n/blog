@@ -24,11 +24,13 @@ featuredImage: null
 exclude: Tartalomjegyzék
 ```
 
-# Disclaimer
+# Tisztázásképpen...
 
-> Lentebb elég sokszor olvashattok megjegyzéseket olyan stílusban, ahogy ez a megjegyzés is íródott. Ezeket abszolúte nem kötelező elolvasni és főleg nem kötelező bennük említett dolgokat megtanulni (kivéve ha amúgy is szó volt róla előadáson), nem kell semminek utánanézni. Csupán azért vannak, ha netán előre érdeklődnétek a dolgok iránt, megfelelően lássátok át a dolgokat, és ha esetleg érdekesnek tűnnek a dolgok, legyen valami extra is, ami fenntartja az érdeklődéseteket.
+> Az ismertetők olvasásakor gyakran ütközhettek olyan paragrafusokba, mint ez a paragrafus is (balról behúzott, szegélyezett és szürkén íródott). Ezek megjegyzések, fun factek, ismeretterjesztő bekezdések. Nem kötelező elolvasni, sem a bennük említett dolgokat megtanulni - kivéve ha amúgy is szó volt róla előadáson. Csupán a tudás mélyítéséért, kiegészítésként, avagy extraként szolgálnak, ami fenntarthatja érdeklődéseteket.
 
-> Az adatb posztok elméléti összefoglalói inkább a megértésre íródtak, kevésbé az alaposság jegyében, inkább konyhanyelvet alkalmazva. Érdemes lehet a könyvet azért jól átbogarászni egy vizsga előtt, de természetesen amit itt olvastok, elfogadom a vizsgán is. **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).** Köszi.
+> Az adatb posztok elméléti összefoglalói inkább az ismeretek ismétlésére íródtak, kevésbé az alaposság jegyében, inkább konyhanyelvet alkalmazva. Érdemes lehet jegyzeteinket és/vagy a könyvet jól átbogarászni egy vizsga előtt.
+
+> **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).** Köszi.
 
 # Miről volt szó előadáson? - elméleti összefoglaló
 
@@ -170,6 +172,12 @@ Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf
 
 # Extra gondolatok
 
-> **Adatbázisok érdekességei:** Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eket (Relational DBMS), tarthatnak érdekességeket.
+## Az adatbázisok érdekességei
 
-> **Jótanács:** Ne feledjétek, nem a tantárgy nehéz, maximum sok az akadály, amivel meg kell küzdeni. Ha megfelelő prioritást adtok a tantárgynak, bőven kellemes csalódást fog hozni a jegy, amit elértek (a küzdelem viszont nyeh, fáj, tudom). Érdemes lehet gyakorlat előtt elolvasod a könyv előadáshoz tartozó részét (azért nem kell bemagolni, elég 1 olvasás), és labor előtt pedig ugyanezt mégegyszer megtenni (laborra nem kell a gyakorlat anyaga). A laborfeladatokat otthon is be tudod fejezni, ha a laboron nem sikerül időben, a labor általában hosszadalmas, de tanulságos (és az SQL-ezés már közel szakmai, szóval az jó buli), azonban mindig figyelj a határidőkre!
+> Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eknek (Relational DBMS), tartogathatnak érdekességeket számotokra. Ezt természetesen akkor, ha időtök is engedi. Aki pedig még ennél is több ismeretre vágyna, olvassa el a könyv _C függelékét_ (274. oldal), amelyben a _[NoSQL adatbázisokról](https://hu.wikipedia.org/wiki/NoSQL)_ olvashat. Ehhez a témakörhöz a MongoDB vagy Redis konkrét DBMS-eket ajánlom ismerkedésre.
+
+## Az első gyakorlat margójára
+
+> Ne feledjétek, nem a tantárgy nehéz, maximum az akadály sok, amivel meg kell küzdeni. Ha megfelelő prioritást adtok a tantárgynak, bőven kellemes csalódást fog hozni a befektetett munkáért kiérdemelt vizsgajegy, amit elértek - ehhez a küzdelem fáj, tudom.
+> Érdemes lehet gyakorlat előtt elolvasod a könyv előadáshoz tartozó részét - **nem kell bemagolni**, elég 1 olvasás is akár. Labor előtt pedig ugyanezt mégegyszer megtenni - de azért megnyugatásképp: laborra **nem kell** a gyakorlat anyaga.
+> A laborfeladatokat otthon is be tudod fejezni, ha a laboron nem sikerül időben, a laborfeladatok alapos megoldása általában hosszadalmas, de tanulságos (és az SQL-ezés közel áll a szakmai munkához, szóval az jó buli), azonban mindig figyelj a határidőkre!
