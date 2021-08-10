@@ -14,10 +14,12 @@ type Props = {
     }
     frontmatter: PostProps
   }
+  locale?: string
 }
 
-const PostHeader: React.FC<Props> = ({ post }) => {
+const PostHeader: React.FC<Props> = ({ post, locale = 'en-UK' }) => {
   const featuredImage = getImage(post.frontmatter.featuredImage)
+  const readMins = Math.ceil(post.fields.readingTime.minutes)
 
   return (
     <Stack mb={12} mt={8} spacing={4} direction={{ base: 'column', sm: 'row' }}>
@@ -31,7 +33,7 @@ const PostHeader: React.FC<Props> = ({ post }) => {
       <Flex flex={{ base: 0, sm: 1.5, md: 3, lg: 4 }} direction="column">
         <Flex justifyContent="space-between">
           <Box color={useColorModeValue('gray.600', 'gray.400')}>
-            {new Date(post.frontmatter.date).toLocaleTimeString('hu-HU', {
+            {new Date(post.frontmatter.date).toLocaleTimeString(locale, {
               hour: '2-digit',
               minute: '2-digit',
               year: 'numeric',
@@ -42,7 +44,9 @@ const PostHeader: React.FC<Props> = ({ post }) => {
           </Box>
           <Box textColor={useColorModeValue('gray.600', 'gray.400')}>
             <FaClock style={{ display: 'inline-block', marginRight: '0.25rem', marginBottom: '0.15rem' }} />
-            <chakra.span>{Math.ceil(post.fields.readingTime.minutes)}&nbsp;perc</chakra.span>
+            <chakra.span>
+              {readMins}&nbsp;min{readMins !== 1 ? 's' : ''}
+            </chakra.span>
           </Box>
         </Flex>
         <Box mt={2} flex={1}>

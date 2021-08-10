@@ -17,11 +17,13 @@ type Props = {
     frontmatter: PostProps
   }
   isFirst?: boolean
+  locale?: string
 }
 
-const PostPreview: React.FC<Props> = ({ post, isFirst }) => {
+const PostPreview: React.FC<Props> = ({ post, isFirst, locale = 'en-UK' }) => {
   const featuredImage = getImage(post.frontmatter.featuredImage)
   const isMobile = useBreakpointValue({ base: true, sm: false })
+  const readMins = Math.ceil(post.fields.readingTime.minutes)
 
   return (
     <Box mb={isFirst && !isMobile ? 6 : 1}>
@@ -40,7 +42,7 @@ const PostPreview: React.FC<Props> = ({ post, isFirst }) => {
         <Flex direction="column" flex={isFirst ? 1.5 : 2.5}>
           <Flex direction={{ base: 'column', sm: 'row' }} justifyContent="space-between">
             <Text color={useColorModeValue('gray.600', 'gray.400')}>
-              {new Date(post.frontmatter.date).toLocaleTimeString('hu-HU', {
+              {new Date(post.frontmatter.date).toLocaleTimeString(locale, {
                 hour: '2-digit',
                 minute: '2-digit',
                 year: 'numeric',
@@ -56,7 +58,9 @@ const PostPreview: React.FC<Props> = ({ post, isFirst }) => {
             </Text>
             <Box mt={2} textColor={useColorModeValue('gray.600', 'gray.400')}>
               <FaClock style={{ display: 'inline-block', marginRight: '0.25rem', marginBottom: '0.15rem' }} />
-              <chakra.span>{Math.ceil(post.fields.readingTime.minutes)}&nbsp;perc</chakra.span>
+              <chakra.span>
+                {readMins}&nbsp;min{readMins !== 1 ? 's' : ''}
+              </chakra.span>
               {post.frontmatter.lead && (
                 <>
                   <chakra.span mx={2}>•</chakra.span>

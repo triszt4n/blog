@@ -21,7 +21,7 @@ const DbPage: React.FC<PostsQueryProps> = ({ data }) => (
       </Box>
       <Stack mt={4} spacing={{ base: 16, sm: 12 }} direction="column">
         {data.allMarkdownRemark.nodes.map((post) => (
-          <PostPreview key={post.fields.slug} post={post} />
+          <PostPreview key={post.fields.slug} post={post} locale="hu-HU" />
         ))}
       </Stack>
     </Container>

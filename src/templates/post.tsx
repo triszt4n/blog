@@ -24,6 +24,7 @@ interface PostTemplateProps {
         readingTime: {
           minutes: number
         }
+        layout: string
       }
     }
   }
@@ -35,7 +36,10 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <PostHeader post={{ fields: post.fields, frontmatter: post.frontmatter }} />
+        <PostHeader
+          post={{ fields: post.fields, frontmatter: post.frontmatter }}
+          locale={post.fields.layout === 'dbpost' ? 'hu-HU' : 'en-UK'}
+        />
         {/* eslint-disable-next-line react/no-danger */}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <Box
@@ -101,6 +105,7 @@ export const query = graphql`
         readingTime {
           minutes
         }
+        layout
       }
     }
   }
