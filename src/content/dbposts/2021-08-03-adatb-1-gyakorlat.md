@@ -111,11 +111,21 @@ Az ER diagramnak a _műveletek_ a gyengesége. Az igazi adatmodellek: hálós, h
 
 #### "is-a" kapcsolat - öröklődés
 
-#TODO
+![](/db/post1/isa.png)
+
+<div class="caption">ábra: Is-a kapcsolat példája</div>
+
+OO programozásnál találkozhattatok ehhez hasonló jelölésrendszerrel. Megörökli az összes tulajdonságot és kapcsolatot.
 
 #### Gyenge entitás
 
-#TODO
+![](/db/post1/weakentity.png)
+
+<div class="caption">ábra: Gyenge entitás és a determináló kapcsolata</div>
+
+Gyenge az entitás, hiszen önmagában **nem tudja** semmilyen tulajdonságában azonosítani magát, megkülönböztetni több másik egyedtől. A kurzusokhoz a megfelelő tárgykódokat hozzárendelve lesznek az egyes kurzusok mint entitások egyértelműen megkülönböztethetők, azaz **egyediek**.
+
+Tehát a tárggyal együtt a **kapcsolata determináló**. A nyíl mindig arra mutat, amire a gyenge entitás felkapaszkodik.
 
 # Minek tanulunk adatbázisokat?
 
