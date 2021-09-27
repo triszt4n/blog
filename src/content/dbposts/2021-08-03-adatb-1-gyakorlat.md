@@ -21,7 +21,7 @@ exclude: Tartalomjegyzék
 
 > Az adatb posztok elméléti összefoglalói inkább az ismeretek ismétlésére íródtak, kevésbé az alaposság jegyében, inkább konyhanyelvet alkalmazva. Érdemes lehet jegyzeteinket és/vagy a könyvet jól átbogarászni egy vizsga előtt.
 
-> **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).** Köszi.
+> **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu).** Köszi.
 
 # Miről volt szó előadáson? - elméleti összefoglaló
 
@@ -165,11 +165,7 @@ Az ismeretek elsajátításával rájössz, hogy te lehetsz...
 
 Nem kötelező jelleggel, csupán mert ZH-szagú feladat: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 217. oldal, 4. feladat
 
-Ha találtok egyéb feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu) No stress.
-
-## Megoldások
-
-#TODO kommentezhető <\!\-\- \-\-\> -vel
+Ha találtok egyéb feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu) No stress.
 
 Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 233. oldal
 
@@ -177,7 +173,7 @@ Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf
 
 ## Az adatbázisok érdekességei
 
-> Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eknek (Relational DBMS), tartogathatnak érdekességeket számotokra. Ezt természetesen akkor, ha időtök is engedi. Aki pedig még ennél is több ismeretre vágyna, olvassa el a könyv _C függelékét_ (274. oldal), amelyben a _[NoSQL adatbázisokról](https://hu.wikipedia.org/wiki/NoSQL)_ olvashat. Ehhez a témakörhöz a MongoDB vagy Redis konkrét DBMS-eket ajánlom ismerkedésre.
+> Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eknek (Relational DBMS), tartogathatnak érdekességeket számotokra. Ezt természetesen akkor, ha időtök is engedi. Aki pedig még ennél is több ismeretre vágyna, olvassa el a könyv _C függelékét_ (274. oldal), amelyben a _[NoSQL adatbázisokról](https://hu.wikipedia.org/wiki/NoSQL)_ olvashat. Ehhez a témakörhöz a MongoDB vagy Redis konkrét DBMS-eket ajánlom ismerkedésre, ha időtök van rá.
 
 ## Az első gyakorlat margójára
 

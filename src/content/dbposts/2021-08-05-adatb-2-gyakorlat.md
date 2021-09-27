@@ -8,6 +8,8 @@ comment: false
 featuredImage: null
 ---
 
+<!--
+
 # Tartalomjegyzék
 
 ```toc
@@ -134,3 +136,5 @@ Ha találtok egyéb feladatot a könyvben, megoldjátok, elküldhetitek nekem a 
 #TODO kommentezhető <\!\-\- \-\-\> -vel
 
 Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 233. oldal
+
+-->

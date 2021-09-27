@@ -156,6 +156,10 @@ body[class='chakra-ui-dark'] .md-table thead {
   margin-bottom: 4rem;
 }
 
+.md-p > img {
+  margin: 0 auto;
+}
+
 /**
  * gatsby-remark-autolink-headers plugin restyle
  * Makes the color of the hook svg icon inverted compared to the background
