@@ -127,7 +127,6 @@ export default {
                 blockquote: 'md-blockquote',
                 listItem: 'md-li',
                 link: 'md-a',
-                tableCell: 'md-td',
                 thematicBreak: 'md-hr',
                 table: 'md-table',
                 inlineCode: 'md-code'

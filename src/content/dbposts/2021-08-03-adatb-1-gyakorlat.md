@@ -8,15 +8,6 @@ comment: false
 featuredImage: null
 ---
 
-<style>
-  .caption {
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: -0.75rem;
-    font-style: italic;
-  }
-</style>
-
 # Tartalomjegyzék
 
 ```toc
@@ -30,7 +21,7 @@ exclude: Tartalomjegyzék
 
 > Az adatb posztok elméléti összefoglalói inkább az ismeretek ismétlésére íródtak, kevésbé az alaposság jegyében, inkább konyhanyelvet alkalmazva. Érdemes lehet jegyzeteinket és/vagy a könyvet jól átbogarászni egy vizsga előtt.
 
-> **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).** Köszi.
+> **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu).** Köszi.
 
 # Miről volt szó előadáson? - elméleti összefoglaló
 
@@ -64,6 +55,8 @@ Ha már szoftveresen tároljuk az adatot, akkor lehessen:
 _Disclaimer_: jelenleg csak az ábra sötétkék egységeivel foglalkozunk.
 
 Fenti képen is látható, amikor a tervező készen áll - és helyesnek tartja - [ER diagramját](#erd), akkor azt sémaleírásba foglalja a DBMS által használt _DDL_ nyelven (Data Definition Language, pl.: SQL). Ezt a _Séma feldolgozó_ pedig lefordítja saját magának (fel is tölti az *adatszótár*ba), és amikor a _DB menedzsernek_ szüksége van a sémákra, akkor innen kéri ki azokat.
+
+### SQL
 
 > **Fun fact**: az _SQL (Structured Query Language)_ - amelyet a laborokon is meg fogtok ismerni - egyszerre _DML_ (Data Manipulation Language) és DDL nyelv (és még annál is több, érdekességek a _könyv 5.4 alfejezetében_), azaz ahogy az ábrán is látható, képes adatlekéréseket is intézni DBMS-ekbe. Tipp: ha laborokon kevésbé szívesen kínoznátok a BME-s adatbázis szervert, akkor vannak különféle SQL playgroundok a neten, ahol tesztelhetitek az SQL kódotokat (és esetleg értelmesebb hibakódokat tudtok visszakapni, mint egy átlag Oracle környezetben), linkek: [példa1](http://sqlfiddle.com/#!4), [példa2](https://livesql.oracle.com/).
 
@@ -118,11 +111,21 @@ Az ER diagramnak a _műveletek_ a gyengesége. Az igazi adatmodellek: hálós, h
 
 #### "is-a" kapcsolat - öröklődés
 
-#TODO
+![](/db/post1/isa.png)
+
+<div class="caption">ábra: Is-a kapcsolat példája</div>
+
+OO programozásnál találkozhattatok ehhez hasonló jelölésrendszerrel. Megörökli az összes tulajdonságot és kapcsolatot.
 
 #### Gyenge entitás
 
-#TODO
+![](/db/post1/weakentity.png)
+
+<div class="caption">ábra: Gyenge entitás és a determináló kapcsolata</div>
+
+Gyenge az entitás, hiszen önmagában **nem tudja** semmilyen tulajdonságában azonosítani magát, megkülönböztetni több másik egyedtől. A kurzusokhoz a megfelelő tárgykódokat hozzárendelve lesznek az egyes kurzusok mint entitások egyértelműen megkülönböztethetők, azaz **egyediek**.
+
+Tehát a tárggyal együtt a **kapcsolata determináló**. A nyíl mindig arra mutat, amire a gyenge entitás felkapaszkodik.
 
 # Minek tanulunk adatbázisokat?
 
@@ -156,17 +159,13 @@ Az ismeretek elsajátításával rájössz, hogy te lehetsz...
 
 - vagy elmész előadásra
 - vagy elolvasod a könyv szükséges fejezeteit
-- vagy megnézed a [következő poszt elméleti összefoglalóját](/db/2021-08-??-adatb-2-gyakorlat#elméleti-összefoglaló)
+- vagy megnézed a [következő poszt elméleti összefoglalóját](/dbpost/2021-08-05-adatb-2-gyakorlat#elméleti-összefoglaló)
 
 ## Házi feladat
 
 Nem kötelező jelleggel, csupán mert ZH-szagú feladat: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 217. oldal, 4. feladat
 
-Ha találtok egyéb feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu) No stress.
-
-## Megoldások
-
-#TODO kommentezhető <\!\-\- \-\-\> -vel
+Ha találtok egyéb feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu) No stress.
 
 Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 233. oldal
 
@@ -174,7 +173,7 @@ Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf
 
 ## Az adatbázisok érdekességei
 
-> Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eknek (Relational DBMS), tartogathatnak érdekességeket számotokra. Ezt természetesen akkor, ha időtök is engedi. Aki pedig még ennél is több ismeretre vágyna, olvassa el a könyv _C függelékét_ (274. oldal), amelyben a _[NoSQL adatbázisokról](https://hu.wikipedia.org/wiki/NoSQL)_ olvashat. Ehhez a témakörhöz a MongoDB vagy Redis konkrét DBMS-eket ajánlom ismerkedésre.
+> Ebben a tárgyban az előadásokon és gyakorlatokon az adatbázisok logikai részével, illetve a fizikai részével ismerkedhettek meg, illetve a laborokon pedig egy enterprise környezetben is használt konkrét szoftveres-hardveres rendszerrel ismerkedhettek meg: az OracleDB-vel. Aki érdeklődik, esetleg a _Relációs adatbázisok_ előadás után nézzen utána a PostgreSQL, MySQL (ezek open source-ok) vagy MSSQL nevű RDBMS-eknek (Relational DBMS), tartogathatnak érdekességeket számotokra. Ezt természetesen akkor, ha időtök is engedi. Aki pedig még ennél is több ismeretre vágyna, olvassa el a könyv _C függelékét_ (274. oldal), amelyben a _[NoSQL adatbázisokról](https://hu.wikipedia.org/wiki/NoSQL)_ olvashat. Ehhez a témakörhöz a MongoDB vagy Redis konkrét DBMS-eket ajánlom ismerkedésre, ha időtök van rá.
 
 ## Az első gyakorlat margójára
 
