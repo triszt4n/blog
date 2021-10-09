@@ -8,8 +8,6 @@ comment: false
 featuredImage: null
 ---
 
-<!--
-
 # Tartalomjegyzék
 
 ```toc
@@ -23,15 +21,15 @@ exclude: Tartalomjegyzék
 
 > Az adatb posztok elméléti összefoglalói inkább az ismeretek ismétlésére íródtak, kevésbé az alaposság jegyében, inkább konyhanyelvet alkalmazva. Érdemes lehet jegyzeteinket és/vagy a könyvet jól átbogarászni egy vizsga előtt.
 
-> **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu).** Köszi.
+> **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu).** Köszi.
 
 # Elméleti összefoglaló
 
-[Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 1. és 4. fejezet ismerendő a gyakorlatra.
+[Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 5.1-5.3 alfejezetek ismerendőek a gyakorlatra.
 
 Építsünk az előző heti gyakorlat [elméleti összefoglalójára](/dbpost/2021-08-03-adatb-1-gyakorlat/#miről-volt-szó-előadáson---elméleti-összefoglaló). Eddig ugyebár idézőjeles "adatmodellként" csak az ER modellel ismerkedhettünk meg, de - mint tudjuk - mivel _nem lehet műveleteket végezni rajtuk_, nem a legjobb ötlet ezekből adatbázis rendszereket készíteni. Hiszen - ahogy egy [DBMS](/dbpost/2021-08-03-adatb-1-gyakorlat/#dbms)-től elvárható - szeretnénk tudni az adatokon és struktúrákon műveleteket végezni: írni + olvasni + módosítani + törölni (CRUD).
 
-A következőkben megismerkedünk a **relációs adatmodellel**, és 3 matematikai paradigmával, amikkel műveleteket tudunk definiálni rajtuk: **relációs algebra** vs. **sorkalkulus** vs. **oszlopkalkulus**. _(ajánlott rövidítések: **"relalg"**, **"sorkalk"**, **"oszkalk"**)_
+A következőkben megismerkedünk a **relációs adatmodellel**, és annak 3 matematikai paradigmájával, amelyekkel műveleteket tudunk definiálni rajtuk: **relációs algebra** vs. **sorkalkulus** vs. **oszlopkalkulus**. _(ajánlott rövidítések: **"relalg"**, **"sorkalk"**, **"okalk"**)_
 
 ## Relációk
 
@@ -127,14 +125,6 @@ Adatok:
 
 ## Házi feladat
 
-Amire órán nem volt idő + nem kötelező jelleggel, csupán mert ZH-szagú feladat: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 217. oldal, 4. feladat
+Amire órán nem volt idő. Érdemes ránézni a biztonságosságot firtató feladatokra, hogy megértsétek annak is az értelmét.
 
-Ha találtok egyéb feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu) No stress.
-
-## Megoldások
-
-#TODO kommentezhető <\!\-\- \-\-\> -vel
-
-Házi feladat megoldása: [Könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf), 233. oldal
-
--->
+Ha találtok feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu) No stress.
