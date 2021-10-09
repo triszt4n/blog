@@ -33,27 +33,64 @@ A következőkben megismerkedünk a **relációs adatmodellel**, és annak 3 mat
 
 ## Relációk
 
-#TODO
+**Definíció:** Halmazok Descartes-szorzatának részhalmaza.
+
+- A sorok sorrendje sosem számít!
+- **Kardinalitás**: Az egyes oszlopok/attribútumok különböző értékeinek száma
+- **Aritás / Reláció foka**: A relációban lévő oszlopok/attribútumok száma
+- **Reláció számossága**: A relációban lévő sorok száma (a konkrét előfordulások száma!)
+- **Relációs séma**: melyik relációban milyen attribútumok találhatók (nagybetűs `R`)
+  - Egy-egy relációs sémára épülhet több **reláció** (kisbetűs `r`)
+- **Adatbázis séma**: egy adatbázis relációs sémáinak összessége
 
 ## Műveletek relációkkal
 
-#TODO
-
 ### Deklaratív vs. Imperatív programozás
 
-#TODO
+A két programozási paradigma elveikben különböznek, de mindkettőnek egy a célja: kommunikálni a számítógép felé, hogy az majd nekünk szépen előállítsa az eredményt - amit mi nagyon szeretnénk.
+
+Különböznek abban, hogy különféleképp tudnak kommunikálni a számítógéppel. Éppen emiatt azzal a nehézséggel járnak, hogy különböző gondolkodási módszert kell alkalmaznunk emberként, amikor valamelyik paradigmát alkalmazva akarjuk a számítógépet eredménygenerálásra bírni.
+
+**Deklaratív:** Nem érdekli, hogy a számítógép saját maga milyen lépésekben fogja végrehajtani a dolgokat a háttérben, csupán annyit kommunikál le a számítógép felé, hogy milyen formában, milyen feltételekkel kéri az eredményeket az adathalmazokból. Tehát ez az _igényközlő, passzív-agresszív_ módszer, azaz a matekozós-logikázós gondolkodást igénylő módszer. 🤔
+
+**Imperatív:** Őt már érdekli, hogy milyen lépéseket akarsz neki betáplálni ahhoz, hogy ő dolgozzon az adatokkal. Azt kommunikálod le ezzel a paradigmával, hogy explicite milyen lépéseket hajtson végre az adaton a számítógép. Ezzel találkozhattatok már, amikor Assemblyben, C/C++-ban vagy Javaban programoztatok. 🤖
 
 ### Relációs algebra
 
-#TODO
+Ez az imperatív megközelítés! Érdemes halmazként kezelni a relációkat (ahogy definiáltuk is), azonban okosan, mert muszáj jól definiálni hozzájuk a halmazműveleteket, hiszen butaság volna komplementert kitalálni a relációkra (az ilyen végtelen ismeretlen vacak volna).
 
-### Sorkalkulus
+**Alapműveletek**:
 
-#TODO
+- Unió
+- Különbség
+- Descartes-szorzat
+- Projekció/Vetítés (pi)
+- Szelekció/Szűrés (szigma)
 
-### Oszlopkalkulus
+Ezekkel fent már teljes lekérdezőnyelvvé is vált a relalg, de lehet persze **származtatott műveletek**et adni neki:
 
-#TODO
+- Természetes illesztés (most csak ezt fogjuk használni egyedül)
+- Théta-illesztés
+- Hányados
+
+### Sor- és oszlopkalkulus
+
+Tehát ő lesz az egyik deklaratív megközelítés, egyben a logikai megközelítés. Tehát alkalmazzuk a matematikai logikát, amikor a kalkulusokkal foglalkozunk. Miből épül fel egy logikai/kalkulus kifejezés?
+
+szimbólumok -> atomok -> formulák -> kifejezések
+
+Mi a gyakorlaton majd megpróbálunk ügyes formulákat kifejleszteni, amelyekből a feladatnak megfelelő kifejezéseket alakíthatunk. Tehát megpróbálunk tipikus formula-trükköket megismerni. 💡
+
+Fontos: okosan kell formalizálnunk a kifejezéseink, hiszen a kalkulus sokkal nagyobb szabadságú világgal rendelkezik -> csak az **interpretációs halmaz** adja neki a határt (ami lehet végtelen számosságú!).
+
+Meg kell nézzük a **formuláink doménjeit**, ugyanis ha már **biztonságos a kifejezésünk**, akkor már boldogabbak lehetünk (visszatérünk a véges számosság világába). Ha számosság világában vagyunk, annak örülünk, hiszen így a kalkulus-kifejezés kiértékelhető lesz számítógépben kezelhető méretű relációk/véges idő mellett is. ✔️
+
+**Formula doménje:** DOM(`phi`) = { `phi`-beli relációk attribútumainak értékei } + { `phi`-beli konstansok }
+
+**Biztonságos `{ t | phi(t) }` kifejezés:**
+
+1. A `t`-k, amik a `phi(t)`-t kielégítik, azoknak mindnek az attribútumértékei DOM(`phi`)-beliek.
+2. A `phi(t)`-n belüli `(∃u)({ u-val dolgozó részformula })` alakú részformulák biztonságosak (rekurzió)
 
 ## Kitekintés
 
@@ -61,7 +98,13 @@ A következőkben megismerkedünk a **relációs adatmodellel**, és annak 3 mat
 
 > Egy ilyen ismert lekérdezési nyelv az **SQL**, amelyről már az [előző posztban](/dbpost/2021-08-03-adatb-1-gyakorlat/#sql) is egy keveset írtam. Az SQL egy tipikus **deklaratív programozási nyelv** - ötvözi az sorkalkulust és (nagyobb részt) az oszlopkalkulust. Ezt majd saját magatok is tapasztaljátok a laborokon. Általában a relációs DBMS-ek az SQL-t használják lekérdezési nyelvükként, azonban legtöbbjük saját **dialektust** talál ki a saját DBMS-ének kiszolgálására - a dialektus itt értelmezhető akár úgy, mint ahogy a természetes nyelvek körében szoktuk értelmezni: **nyelvváltozat**, kicsit személyre szabva a DBMS különleges funkcióinak ellátására.
 
+![sql](/db/post2/sql_example.png)
+
+<div class="caption">ábra: Rövid SQL utasítás</div>
+
 > Ilyen dialektus a **[PLSQL](https://www.techonthenet.com/oracle/index.php)** is, amelyet az **Oracle** talált ki a saját DBMS-éhez is - amellyel kicsit majd a laborokon is meg fogtok tudni ismerkedni, nem túl részletekbe menően. Ennek a dialektusnak a lényege, hogy az SQL meglévő tudásához hozzáadja a **"procedúrák", azaz eljárások** lehetőségét is. Ezáltal a PLSQL nemcsak deklaratív programozási lehetőségekkel szolgál, hanem **imperatívakkal** is.
+
+> A [deklaratív programozás](en.wikipedia.org/wiki/Declarative_programming)hoz tartozik pár érdekesebb ma is használt programozási nyelv az SQL-en kívül pl. Elixir, Prolog, Erlang vagy Haskell.
 
 # Feladatsor
 
@@ -127,4 +170,4 @@ Adatok:
 
 Amire órán nem volt idő. Érdemes ránézni a biztonságosságot firtató feladatokra, hogy megértsétek annak is az értelmét.
 
-Ha találtok feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@simonyi.bme.hu](mailto:piller.trisztan@simonyi.bme.hu) No stress.
+Ha találtok feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu) No stress.
