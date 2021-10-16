@@ -33,7 +33,7 @@ export default DbPage
 export const query = graphql`
   query DbPosts {
     allMarkdownRemark(
-      filter: { fields: { layout: { eq: "dbpost" } } }
+      filter: { fields: { layout: { eq: "db" } } }
       sort: { fields: [frontmatter___date], order: ASC }
       limit: 6
     ) {

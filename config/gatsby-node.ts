@@ -69,7 +69,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
 
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, layout } = node.fields
-    const template = layout === 'dbpost' ? 'post' : layout
+    const template = layout === 'db' ? 'post' : layout
 
     createPage({
       path: slug,
