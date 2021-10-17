@@ -178,8 +178,18 @@ Következő órára az [elméleti összefoglalót](http://localhost:8000/db/2021
 
 Az óra végén pár sorkalkulus sajnos lemaradt, illetve nem volt idő az oszlopkalkulusok tisztázására (sorkalkulusból könnyen előállítható az oszlopkalkulus, nincs pánikra ok).
 
-Sorkalkulussal:
+#### d) Melyek azok a szakok, amiket csak egy-egy egyetemen oktatnak?
 
-**d) Melyek azok a szakok, amiket csak egy-egy egyetemen oktatnak?**
+![2d](/db/post2/2d.jpg)
 
-**e) Melyik a legrégebben alapított és támogatott egyetem?**
+#### e) Melyik a legrégebben alapított és támogatott egyetem?
+
+![2e](/db/post2/2e.jpg)
+
+Végül pedig erre a feladatra a kész oszlopkalkulusos megoldást mutatom meg, ebből könnyen megérthető, hogy formalizálandó a sorkalkulus alapján egy oszlopkalkulus kifejezés:
+
+![2d](/db/post2/3e.png)
+
+- Kicsit rövidebb a "kiválasztásos" részünk, ugyanis itt már akár az `Á(e,x)` tartalmazási kritériumba be lehet illeszteni a kikeresendő egyetemek nevére való oszlopváltozót.
+- Itt már nem egy N-es sorra kell az univerzális kvantort (`∀`) használni, hanem egyes oszlopokra, és így indexelésre sincs szükség.
+- Házi feladatként próbáld meg magadnak átalakítani a többi sorkalkulusodat is oszlopkalkulusra, hogy a kezed is megszokja a formalizálás módszerét.

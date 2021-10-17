@@ -24,6 +24,8 @@ to-heading: 5
 
 > **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu).** Köszi.
 
+Az előző óra végén pár sorkalkulus sajnos lemaradt, illetve nem volt idő az oszlopkalkulusok tisztázására, így azok levezetési útmutatóját feltöltöttem az előző poszt [Megoldások paragráfusa](/db/2021-08-05-adatb-2-gyakorlat/#megoldások-új) alá.
+
 # Elméleti összefoglaló
 
 [Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 3. fejezet ismerendő a gyakorlatra.
@@ -53,6 +55,10 @@ Néhány fontosabb jelölés és számolás:
 
 > Amit ezen a gyakorlaton ismerhettek meg - adatszervezési modellek, azokra kitalált algoritmusok - két későbbi 4. féléves tárgyatok fogja még részletesebben bemutatni: Algoritmuselmélet és Operációs rendszerek. Szóval no worries, ha valaki kevésnek tartaná az itt megismert dolgok halmazát, ő még később több ismeretre fog szert tenni adatszerkezetekkel és algoritmusaikkal kapcsolatosan. Mi csupán a leggyakoribb adatszerkezeteket és azok egyszerűbb működési algoritmusait fogjuk tárgyalni.
 
+![WIP](/db/WIP.png)
+
+<!--
+
 ### Heap
 
 Nyeh.
@@ -77,6 +83,8 @@ A ritka index alfaja. Több szintű ritka index igazából, de azt okosan kialak
 SŰRŰ + B\*FÁK előnye!!! KÉTKULCSOS KERESÉS PL. FELADAT A KÖNYV HÁTULJÁBAN???
 
 ### Vödrös hash
+
+-->
 
 # Feladatsor
 
