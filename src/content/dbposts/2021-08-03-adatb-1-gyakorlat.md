@@ -1,5 +1,5 @@
 ---
-layout: dbpost
+layout: db
 date: 2021-08-03 16:52:41
 title: 'Adatb - 1. gyakorlat'
 lead: 'Előadás anyagának ismétlése és extra feladatmagyarázatok'
@@ -159,7 +159,7 @@ Az ismeretek elsajátításával rájössz, hogy te lehetsz...
 
 - vagy elmész előadásra
 - vagy elolvasod a könyv szükséges fejezeteit
-- vagy megnézed a [következő poszt elméleti összefoglalóját](/dbpost/2021-08-05-adatb-2-gyakorlat#elméleti-összefoglaló)
+- vagy megnézed a [következő poszt elméleti összefoglalóját](/db/2021-08-05-adatb-2-gyakorlat#elméleti-összefoglaló)
 
 ## Házi feladat
 

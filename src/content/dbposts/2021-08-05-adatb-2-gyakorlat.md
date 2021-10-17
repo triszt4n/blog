@@ -1,5 +1,5 @@
 ---
-layout: dbpost
+layout: db
 date: 2021-08-05 19:51:11
 title: 'Adatb - 2. gyakorlat'
 lead: 'Relációk algebrája, valamint sor- és oszlopkalkulusa'
@@ -27,7 +27,7 @@ exclude: Tartalomjegyzék
 
 [Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 5.1-5.3 alfejezetek ismerendőek a gyakorlatra.
 
-Építsünk az előző heti gyakorlat [elméleti összefoglalójára](/dbpost/2021-08-03-adatb-1-gyakorlat/#miről-volt-szó-előadáson---elméleti-összefoglaló). Eddig ugyebár idézőjeles "adatmodellként" csak az ER modellel ismerkedhettünk meg, de - mint tudjuk - mivel _nem lehet műveleteket végezni rajtuk_, nem a legjobb ötlet ezekből adatbázis rendszereket készíteni. Hiszen - ahogy egy [DBMS](/dbpost/2021-08-03-adatb-1-gyakorlat/#dbms)-től elvárható - szeretnénk tudni az adatokon és struktúrákon műveleteket végezni: írni + olvasni + módosítani + törölni (CRUD).
+Építsünk az előző heti gyakorlat [elméleti összefoglalójára](/db/2021-08-03-adatb-1-gyakorlat/#miről-volt-szó-előadáson---elméleti-összefoglaló). Eddig ugyebár idézőjeles "adatmodellként" csak az ER modellel ismerkedhettünk meg, de - mint tudjuk - mivel _nem lehet műveleteket végezni rajtuk_, nem a legjobb ötlet ezekből adatbázis rendszereket készíteni. Hiszen - ahogy egy [DBMS](/db/2021-08-03-adatb-1-gyakorlat/#dbms)-től elvárható - szeretnénk tudni az adatokon és struktúrákon műveleteket végezni: írni + olvasni + módosítani + törölni (CRUD).
 
 A következőkben megismerkedünk a **relációs adatmodellel**, és annak 3 matematikai paradigmájával, amelyekkel műveleteket tudunk definiálni rajtuk: **relációs algebra** vs. **sorkalkulus** vs. **oszlopkalkulus**. _(ajánlott rövidítések: **"relalg"**, **"sorkalk"**, **"okalk"**)_
 
@@ -96,7 +96,7 @@ Meg kell nézzük a **formuláink doménjeit**, ugyanis ha már **biztonságos a
 
 > A megismert **3 matematikai paradigma** segítségével szoktak DBMS tervezők **lekérdező nyelveket** definiálni az adatbázisok szoftveres világában. Ezen lekérdező nyelvek segítségével tud a programozó egyértelmű lekéréseket írni, amit majd a **Lekérdezés feldolgozó** fog értelmezni és abból az eredményt visszaadni.
 
-> Egy ilyen ismert lekérdezési nyelv az **SQL**, amelyről már az [előző posztban](/dbpost/2021-08-03-adatb-1-gyakorlat/#sql) is egy keveset írtam. Az SQL egy tipikus **deklaratív programozási nyelv** - ötvözi az sorkalkulust és (nagyobb részt) az oszlopkalkulust. Ezt majd saját magatok is tapasztaljátok a laborokon. Általában a relációs DBMS-ek az SQL-t használják lekérdezési nyelvükként, azonban legtöbbjük saját **dialektust** talál ki a saját DBMS-ének kiszolgálására - a dialektus itt értelmezhető akár úgy, mint ahogy a természetes nyelvek körében szoktuk értelmezni: **nyelvváltozat**, kicsit személyre szabva a DBMS különleges funkcióinak ellátására.
+> Egy ilyen ismert lekérdezési nyelv az **SQL**, amelyről már az [előző posztban](/db/2021-08-03-adatb-1-gyakorlat/#sql) is egy keveset írtam. Az SQL egy tipikus **deklaratív programozási nyelv** - ötvözi az sorkalkulust és (nagyobb részt) az oszlopkalkulust. Ezt majd saját magatok is tapasztaljátok a laborokon. Általában a relációs DBMS-ek az SQL-t használják lekérdezési nyelvükként, azonban legtöbbjük saját **dialektust** talál ki a saját DBMS-ének kiszolgálására - a dialektus itt értelmezhető akár úgy, mint ahogy a természetes nyelvek körében szoktuk értelmezni: **nyelvváltozat**, kicsit személyre szabva a DBMS különleges funkcióinak ellátására.
 
 ![sql](/db/post2/sql_example.png)
 
@@ -171,3 +171,25 @@ Adatok:
 Amire órán nem volt idő. Érdemes ránézni a biztonságosságot firtató feladatokra, hogy megértsétek annak is az értelmét.
 
 Ha találtok feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu) No stress.
+
+Következő órára az [elméleti összefoglalót](http://localhost:8000/db/2021-10-16-adatb-3-gyakorlat/#elméleti-összefoglaló) és/vagy a könyv 3. fejezetét olvassátok el.
+
+## Megoldások (ÚJ!)
+
+Az óra végén pár sorkalkulus sajnos lemaradt, illetve nem volt idő az oszlopkalkulusok tisztázására (sorkalkulusból könnyen előállítható az oszlopkalkulus, nincs pánikra ok).
+
+#### d) Melyek azok a szakok, amiket csak egy-egy egyetemen oktatnak?
+
+![2d](/db/post2/2d.jpg)
+
+#### e) Melyik a legrégebben alapított és támogatott egyetem?
+
+![2e](/db/post2/2e.jpg)
+
+Végül pedig erre a feladatra a kész oszlopkalkulusos megoldást mutatom meg, ebből könnyen megérthető, hogy formalizálandó a sorkalkulus alapján egy oszlopkalkulus kifejezés:
+
+![2d](/db/post2/3e.png)
+
+- Kicsit rövidebb a "kiválasztásos" részünk, ugyanis itt már akár az `Á(e,x)` tartalmazási kritériumba be lehet illeszteni a kikeresendő egyetemek nevére való oszlopváltozót.
+- Itt már nem egy N-es sorra kell az univerzális kvantort (`∀`) használni, hanem egyes oszlopokra, és így indexelésre sincs szükség.
+- Házi feladatként próbáld meg magadnak átalakítani a többi sorkalkulusodat is oszlopkalkulusra, hogy a kezed is megszokja a formalizálás módszerét.
