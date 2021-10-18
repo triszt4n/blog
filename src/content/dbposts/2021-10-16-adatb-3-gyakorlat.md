@@ -13,7 +13,7 @@ featuredImage: null
 ```toc
 # This code block gets replaced with the TOC
 exclude: Tartalomjegyzék
-to-heading: 5
+to-heading: 4
 ```
 
 # Tisztázásképpen...
@@ -24,7 +24,7 @@ to-heading: 5
 
 > **U.i.: ha esetleg hibát véltek felfedezni akárhol, bátran szóljatok rám gyakorlaton, vagy kiáltsatok rám email címemen: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu).** Köszi.
 
-Az előző óra végén pár sorkalkulus sajnos lemaradt, illetve nem volt idő az oszlopkalkulusok tisztázására, így azok levezetési útmutatóját feltöltöttem az előző poszt [Megoldások paragráfusa](/db/2021-08-05-adatb-2-gyakorlat/#megoldások-új) alá.
+##### Az előző óra végén pár sorkalkulus sajnos lemaradt, illetve nem volt idő az oszlopkalkulusok tisztázására, így azok levezetési útmutatóját feltöltöttem az előző poszt [Megoldások paragráfusa](/db/2021-08-05-adatb-2-gyakorlat/#megoldások-új) alá.
 
 # Elméleti összefoglaló
 
@@ -58,16 +58,25 @@ Néhány fontosabb jelölés és számolás:
 ![WIP](/db/WIP.png)
 
 <!--
-
 ### Heap
 
-Nyeh.
+**Fontos**: A heap itt a szó szerinti halom értelmében értelmezendő -> azaz a _heap_ egy halom adat egymásracsapva, ahogy jönnek. Semmi rendezettség, semmi logika.
+
+> Nem összekeverendő a [Heap fa adatszerkezettel](<https://en.wikipedia.org/wiki/Heap_(data_structure)>), amelyet a roppant hatékony komplexitású [heapsort](https://en.wikipedia.org/wiki/Heapsort) rendezési algoritmus is használ.
+
+### Vödrös hash
+
+<<< BASIC LEÍRÁS >>>
+
+`h(k): K -> [0 ... B-1]`, és példának okáért kedvelt definiálása valami `c` konstans mellett: `h(k) = (c * k) mod B`.
 
 ### Indexek
 
+<<< BASIC LEÍRÁS: felépítésük, rendezettség fogalma, keresési gyorsaság, nem ugyanaz mint a hash, rendezési (összetett kulcs esetén) és keresési kulcs különvétele >>>
+
 #### Ritka index
 
-LEIRÁS
+<<< BASIC LEÍRÁS: hol a rendezettség >>>
 
 ##### B\*-fa
 
@@ -78,12 +87,11 @@ A ritka index alfaja. Több szintű ritka index igazából, de azt okosan kialak
 
 #### Sűrű index
 
+<<< BASIC LEÍRÁS: hol a rendezettség, előnyei >>>
+
 #### Vegyesfelvágott
 
-SŰRŰ + B\*FÁK előnye!!! KÉTKULCSOS KERESÉS PL. FELADAT A KÖNYV HÁTULJÁBAN???
-
-### Vödrös hash
-
+<<< BASIC LEÍRÁS: előnye PL. FELADAT A KÖNYV HÁTULJÁBAN??? >>>
 -->
 
 # Feladatsor
