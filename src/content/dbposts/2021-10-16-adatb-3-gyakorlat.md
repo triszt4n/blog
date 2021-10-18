@@ -4,7 +4,7 @@ date: 2021-10-16 18:12:56
 title: 'Adatb - 3. gyakorlat'
 lead: 'A DBMS fizikai részének adatszervezése, működése'
 tags: ['adatb', 'adatszerkezetek', 'algoritmusok']
-comment: false
+comment: true
 featuredImage: null
 ---
 

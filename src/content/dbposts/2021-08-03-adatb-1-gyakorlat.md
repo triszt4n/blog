@@ -4,7 +4,7 @@ date: 2021-08-03 16:52:41
 title: 'Adatb - 1. gyakorlat'
 lead: 'Előadás anyagának ismétlése és extra feladatmagyarázatok'
 tags: ['adatb', 'ERD']
-comment: false
+comment: true
 featuredImage: null
 ---
 

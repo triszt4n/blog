@@ -4,7 +4,7 @@ date: 2021-08-05 19:51:11
 title: 'Adatb - 2. gyakorlat'
 lead: 'Relációk algebrája, valamint sor- és oszlopkalkulusa'
 tags: ['adatb', 'relaciok', 'matek']
-comment: false
+comment: true
 featuredImage: null
 ---
 
