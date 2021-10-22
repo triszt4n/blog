@@ -55,9 +55,6 @@ Néhány fontosabb jelölés és számolás:
 
 > Amit ezen a gyakorlaton ismerhettek meg - adatszervezési modellek, azokra kitalált algoritmusok - két későbbi 4. féléves tárgyatok fogja még részletesebben bemutatni: Algoritmuselmélet és Operációs rendszerek. Szóval no worries, ha valaki kevésnek tartaná az itt megismert dolgok halmazát, ő még később több ismeretre fog szert tenni adatszerkezetekkel és algoritmusaikkal kapcsolatosan. Mi csupán a leggyakoribb adatszerkezeteket és azok egyszerűbb működési algoritmusait fogjuk tárgyalni.
 
-![WIP](/db/WIP.png)
-
-<!--
 ### Heap
 
 **Fontos**: A heap itt a szó szerinti halom értelmében értelmezendő -> azaz a _heap_ egy halom adat egymásracsapva, ahogy jönnek. Semmi rendezettség, semmi logika.
@@ -66,33 +63,79 @@ Néhány fontosabb jelölés és számolás:
 
 ### Vödrös hash
 
-<<< BASIC LEÍRÁS >>>
-
-`h(k): K -> [0 ... B-1]`, és példának okáért kedvelt definiálása valami `c` konstans mellett: `h(k) = (c * k) mod B`.
+A vödrös hash megnöveli az adatok rendezettségét: nem egy nagy halomba tesszük az adatokat, hanem több "vödörbe". Létrehozunk egy `h(k): K -> [0 ... B-1]` alakú leképezési függvényt. Például lehet ennek a definiálása valami `c` konstans mellett: `h(k) = (c * k) mod B`, ahol a `k` a keresési kulcs, amit átadunk a leképezési függvénynek (ez lehet pl. egy könyv sorozatszáma és ekkor a sorozatszám vödrökkel vett maradékos osztásának eredménye alapján osztjuk be az elemeket a vödrökbe).
 
 ### Indexek
 
-<<< BASIC LEÍRÁS: felépítésük, rendezettség fogalma, keresési gyorsaság, nem ugyanaz mint a hash, rendezési (összetett kulcs esetén) és keresési kulcs különvétele >>>
+Az indexek tulajdonképpen csupán egy újabb absztrakciós szintet tesznek a valódi adatblokkok fölé. Ez egyáltalán nem rokona a hashnek! A hashben függvény segít nekünk az adatállományban megtalálni a keresett elemet. Az index viszont NEM függvény, ez egy segédstruktúraként szolgáló valódi adathalmaz! Itt is vannak _blokkok_ és _rekordok_.
+
+Nevezzük az adatállományt **D**-nek, az indexállományt **I**-nek. Ekkor:
+
+- **D**-ben: egy adatblokk tartalmaz több adatrekordot.
+- **D**-ben: egy adatrekord tartalmazza a rekordhoz tartozó mezőknek értékeit.
+- **I**-ben: egy indexblokk tartalmaz több indexrekordot. -> Mikre képezzük az indexrekordokat❓
+- **I**-ben: egy indexrekord tartalmaz egy _keresési kulcsértéket_ (pl.: könyvcím) és egy _mutatót_. -> Mire mutat a *mutató*❓
+
+Fontos: Az indexállományt mindig rendezve tartjuk! Mit jelent ez? A két indexelési formánál külön-külön kap ez a mondat értelmet, lássuk...
 
 #### Ritka index
 
-<<< BASIC LEÍRÁS: hol a rendezettség >>>
+**Q:** Mikre képezzük az indexrekordokat?
+**A:** Ritka index esetén az indexrekordokat egy-egy adatblokkra képezzük. Ilyenkor az indexrekordban található _keresési kulcsérték_ (pl.: könyvcím) értelme bonyolódik. Legyen 2 egymásmelletti indexrekordunk: _Micimackó_, aztán utána _Mulan_. Oké, de hol van a _Mikiegér kalandjai_ című könyv? Az indexrekordok között nincs ilyen! Pedig az adatrekordok között van ilyen könyv.
+
+Akkor viszont ez egy dolgot jelenthet: A Micimackó indexrekordja nemcsak a Micimackó adatrekordra fog leképeződni, hanem minden más adatrekordra is, ami még a Mulan előtt van! Tehát az **indexrekordok _keresési kulcsa_ egy intervallum kezdetét fogja mutatni**.
+
+> Megesik, hogy az indexrekordok _keresési kulcsa_ NEM az intervallum kezdetét fogja leképezni, hanem a végét. Azonban mi most a tárgy keretében olyan ritka indexeket fogunk építeni, amik az intervallumok kezdetére képződnek.
+
+Tehát így hány darab indexrekordunk lesz? Amennyi adatblokk van.
+
+**Q:** Mire mutat a _mutató_?
+**A:** Egy indexrekordban a _mutató_ mutat arra a **teljes adatblokkra, amiben az az adatrekord van**, amire kerestünk. Fentebb kifejtettük, milyen másik adatrekordok lesznek még a mutatott adatblokkban. Lejjebb kifejtetjük, hogy ez mit jelent az index rendezettségének szempontjából.
+
+**Q:** Az indexállományt mindig rendezve tartjuk! Mit jelent ez a _ritka index_ esetén?
+**A:** Ritka index esetén muszáj az **indexrekordokat úgy tárolni, hogy azok valamilyen sorrendben legyenek, pl.: betűrendben**, ha könyvcímekről beszélünk. Így lesz elég könnyű keresgélni az adatrekordokon pl.: bináris kereséssel (ami nagyon gyors).
+
+🚀 Valamint fontos belegondolni: Legyen 2 egymásmelletti indexrekordunk: Micimackó, aztán utána Mulan. A Micimackós indexrekord egy egész adatblokkra mutat, a Mulanos egy másikra. Ezért a Micimackós adatblokkon BELÜL csak olyan adatrekordok lehetnek, amik között ott van a Micimackó és minden olyan könyv rekordja, aminek a címe még megelőzi a Mulant! Ugyanis a Mulan már egy másik adatblokkban van. Tehát a ritka index esetén az **adatblokkokon belül az adatrekordok intervallumrendezettek**. Ez nem jelenti, hogy az adatblokkon belül betűrendben vannak az adatrekordok, de az biztos, hogy egy bizonyos intervallumon belüliek ezek a rekordok.
 
 ##### B\*-fa
 
 A ritka index alfaja. Több szintű ritka index igazából, de azt okosan kialakítva:
 
-- Asd
-- Fgh
+1. Legalsó szinten úgy működik mint egy egyszerű ritka index: egy-egy indexrekord egy-egy adatblokkra képeződik.
+2. Ezeket az alsó szinten lévő indexrekordokat indexblokkokba csomagoljuk.
+3. A felette lévő szinten most már egy-egy indexrekord egy-egy indexblokkra fog képeződni.
+4. Visszatérünk a 2. lépésre rekurzívan, és lépegetünk felfelé, építjük a szinteket.
+
+**STOP**: Akkor állunk meg, amikor a legfelső szint már csak 1 db indexblokkból áll.
+
+A számolásokat mindenképp nézzétek meg újra a könyvben gyakorlat után is, de a gyakorlaton remélhetőleg mindenképp értelmet fognak nyerni!
 
 #### Sűrű index
 
-<<< BASIC LEÍRÁS: hol a rendezettség, előnyei >>>
+**Q:** Mikre képezzük az indexrekordokat?
+**A:** Sűrű index esetén az indexrekordokat egy-egy adatrekordra képezzük. Ilyenkor az indexrekordban található _keresési kulcsérték_ (pl.: könyvcím) értelme egyértelmű. A Micimackó indexrekordja a Micimackós adatrekordra fog leképeződni.
+
+Tehát így hány darab indexrekordunk lesz? Amennyi adatrekord van.
+
+**Q:** Mire mutat a _mutató_?
+**A:** Egy indexrekordban a _mutató_ mutat arra a **teljes adatblokkra, amiben az az adatrekord van**. HOPPÁ!!! Ez ugyanaz, mint a ritka indexnél! Egyetlen indoka van: mutathatnánk csak a rekordra is, de amúgyis a kiolvasáskor egy egész adatblokkot tudunk csak kiolvasni, nem egy kis adatrekordot, így akkor már muszáj az adatblokkra mutatni. Viszont fontos különbség, amit tényleg érdemes kiemelni: **Minden adatrekordra van egy-egy indexrekord, nem csak a blokkokra!**
+
+💡 Pont emiatt a sűrű index önmagában nem elég. A sűrű indexre mindig ráépül egy másik adatszervezési paradigma: ritka index vagy hash. A sűrű indexek elsősorban a _fő állomány kezelését könnyítik meg_, illetve a _több kulcs szerinti keresést_ teszik lehetővé.
+
+**Q:** Az indexállományt mindig rendezve tartjuk! Mit jelent ez a _sűrű index_ esetén?
+**A:** Sűrű index esetén muszáj az **indexrekordokat úgy tárolni, hogy azok valamilyen sorrendben legyenek, pl.: betűrendben**, ha könyvcímekről beszélünk. Így lesz elég könnyű keresgélni az adatrekordokon pl.: bináris kereséssel (ami nagyon gyors).
+
+Viszont itt már nem kell semmiféle rendezettséget elvárni az adatállománytól! Már nem intervallumokat jellemeznek az indexrekordok, hanem konkrét adatrekordokat! Sőt, tök jó, mert a sűrű index meggyorsíthatja a rekordelérést, hiszen ha csapunk fölé egy ritka indexet, akkor annak a mérete jóval kisebb is lehet, mint egy sűrű nélküli ritka index! 🏖
 
 #### Vegyesfelvágott
 
-<<< BASIC LEÍRÁS: előnye PL. FELADAT A KÖNYV HÁTULJÁBAN??? >>>
--->
+Segítsünk, hogy a fenti megállapítás - 💡 a sűrű indexek a _több kulcs szerinti keresést_ teszik lehetővé - értelmet nyerjen!
+
+Házi feladatként feladom a könyv 225. oldalán található Fizikai szervezés témakörében feladott 33-as feladatot. A megoldása a 242. oldalon kezdődik és gyakorlatiasan megérthető a két kulcs szerinti keresés működése indexekkel (méghozzá a B\*-fával egy egészen elegáns megoldást kapunk a problémára).
+
+## Kitekintés
+
+> Ha a kisujjadban van a fizikai architektúrák ismerete, és unalmas lenne számodra ez az anyagrész, és szívesebben foglalkoznál magasabb absztrakciós/szoftveres szintjeivel az adatbázisoknak, akkor ajánlom megtekintésre ezt a Youtube playlistet: [youtube.com/playlist?list=PLOspHqNVtKAAXDobTc9kBWwnfgzNV2k_a](https://youtube.com/playlist?list=PLOspHqNVtKAAXDobTc9kBWwnfgzNV2k_a) az IBM-től, amelyben a cloud alapú adattárolás iparban is széles körben felhasznált technológiáit mutatják be.
 
 # Feladatsor
 

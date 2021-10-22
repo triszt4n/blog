@@ -106,6 +106,8 @@ Meg kell nézzük a **formuláink doménjeit**, ugyanis ha már **biztonságos a
 
 > A [deklaratív programozás](en.wikipedia.org/wiki/Declarative_programming)hoz tartozik pár érdekesebb ma is használt programozási nyelv az SQL-en kívül pl. Elixir, Prolog, Erlang vagy Haskell.
 
+> A relációs adatbázisokkal kapcsolatban ajánlom az IBM rövid ismeretterjesztő videóit: [youtube.com/watch?v=OqjJjpjDRLc](https://www.youtube.com/watch?v=OqjJjpjDRLc)
+
 # Feladatsor
 
 ## Feladatok
