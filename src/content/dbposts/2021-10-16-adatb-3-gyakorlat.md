@@ -81,6 +81,7 @@ Fontos: Az indexállományt mindig rendezve tartjuk! Mit jelent ez? A két index
 #### Ritka index
 
 **Q:** Mikre képezzük az indexrekordokat?
+
 **A:** Ritka index esetén az indexrekordokat egy-egy adatblokkra képezzük. Ilyenkor az indexrekordban található _keresési kulcsérték_ (pl.: könyvcím) értelme bonyolódik. Legyen 2 egymásmelletti indexrekordunk: _Micimackó_, aztán utána _Mulan_. Oké, de hol van a _Mikiegér kalandjai_ című könyv? Az indexrekordok között nincs ilyen! Pedig az adatrekordok között van ilyen könyv.
 
 Akkor viszont ez egy dolgot jelenthet: A Micimackó indexrekordja nemcsak a Micimackó adatrekordra fog leképeződni, hanem minden más adatrekordra is, ami még a Mulan előtt van! Tehát az **indexrekordok _keresési kulcsa_ egy intervallum kezdetét fogja mutatni**.
@@ -90,9 +91,11 @@ Akkor viszont ez egy dolgot jelenthet: A Micimackó indexrekordja nemcsak a Mici
 Tehát így hány darab indexrekordunk lesz? Amennyi adatblokk van.
 
 **Q:** Mire mutat a _mutató_?
+
 **A:** Egy indexrekordban a _mutató_ mutat arra a **teljes adatblokkra, amiben az az adatrekord van**, amire kerestünk. Fentebb kifejtettük, milyen másik adatrekordok lesznek még a mutatott adatblokkban. Lejjebb kifejtetjük, hogy ez mit jelent az index rendezettségének szempontjából.
 
 **Q:** Az indexállományt mindig rendezve tartjuk! Mit jelent ez a _ritka index_ esetén?
+
 **A:** Ritka index esetén muszáj az **indexrekordokat úgy tárolni, hogy azok valamilyen sorrendben legyenek, pl.: betűrendben**, ha könyvcímekről beszélünk. Így lesz elég könnyű keresgélni az adatrekordokon pl.: bináris kereséssel (ami nagyon gyors).
 
 🚀 Valamint fontos belegondolni: Legyen 2 egymásmelletti indexrekordunk: Micimackó, aztán utána Mulan. A Micimackós indexrekord egy egész adatblokkra mutat, a Mulanos egy másikra. Ezért a Micimackós adatblokkon BELÜL csak olyan adatrekordok lehetnek, amik között ott van a Micimackó és minden olyan könyv rekordja, aminek a címe még megelőzi a Mulant! Ugyanis a Mulan már egy másik adatblokkban van. Tehát a ritka index esetén az **adatblokkokon belül az adatrekordok intervallumrendezettek**. Ez nem jelenti, hogy az adatblokkon belül betűrendben vannak az adatrekordok, de az biztos, hogy egy bizonyos intervallumon belüliek ezek a rekordok.
@@ -113,16 +116,19 @@ A számolásokat mindenképp nézzétek meg újra a könyvben gyakorlat után is
 #### Sűrű index
 
 **Q:** Mikre képezzük az indexrekordokat?
+
 **A:** Sűrű index esetén az indexrekordokat egy-egy adatrekordra képezzük. Ilyenkor az indexrekordban található _keresési kulcsérték_ (pl.: könyvcím) értelme egyértelmű. A Micimackó indexrekordja a Micimackós adatrekordra fog leképeződni.
 
 Tehát így hány darab indexrekordunk lesz? Amennyi adatrekord van.
 
 **Q:** Mire mutat a _mutató_?
+
 **A:** Egy indexrekordban a _mutató_ mutat arra a **teljes adatblokkra, amiben az az adatrekord van**. HOPPÁ!!! Ez ugyanaz, mint a ritka indexnél! Egyetlen indoka van: mutathatnánk csak a rekordra is, de amúgyis a kiolvasáskor egy egész adatblokkot tudunk csak kiolvasni, nem egy kis adatrekordot, így akkor már muszáj az adatblokkra mutatni. Viszont fontos különbség, amit tényleg érdemes kiemelni: **Minden adatrekordra van egy-egy indexrekord, nem csak a blokkokra!**
 
 💡 Pont emiatt a sűrű index önmagában nem elég. A sűrű indexre mindig ráépül egy másik adatszervezési paradigma: ritka index vagy hash. A sűrű indexek elsősorban a _fő állomány kezelését könnyítik meg_, illetve a _több kulcs szerinti keresést_ teszik lehetővé.
 
 **Q:** Az indexállományt mindig rendezve tartjuk! Mit jelent ez a _sűrű index_ esetén?
+
 **A:** Sűrű index esetén muszáj az **indexrekordokat úgy tárolni, hogy azok valamilyen sorrendben legyenek, pl.: betűrendben**, ha könyvcímekről beszélünk. Így lesz elég könnyű keresgélni az adatrekordokon pl.: bináris kereséssel (ami nagyon gyors).
 
 Viszont itt már nem kell semmiféle rendezettséget elvárni az adatállománytól! Már nem intervallumokat jellemeznek az indexrekordok, hanem konkrét adatrekordokat! Sőt, tök jó, mert a sűrű index meggyorsíthatja a rekordelérést, hiszen ha csapunk fölé egy ritka indexet, akkor annak a mérete jóval kisebb is lehet, mint egy sűrű nélküli ritka index! 🏖
