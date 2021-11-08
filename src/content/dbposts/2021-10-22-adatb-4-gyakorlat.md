@@ -26,7 +26,7 @@ to-heading: 4
 
 # Elméleti összefoglaló
 
-[Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 3. fejezet ismerendő a gyakorlatra.
+[Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 6. fejezet ismerendő a gyakorlatra.
 
 Előző alkalommal [megismerkedtünk azzal, miként is szerveződik meg fizikai szinten az adatbázisunk](/db/2021-10-16-adatb-3-gyakorlat/#elméleti-összefoglaló). A fizikai adatbázisunk _Fájlmenedzserét_ viszont most már nem fogjuk tovább vizsgálni. 🔬
 
@@ -38,15 +38,11 @@ Most egy okoskodós részéhez érünk a [DBMS](/db/2021-08-03-adatb-1-gyakorlat
 
 _Disclaimer_: jelenleg már az ábra világoskék egységeivel is foglalkozunk!
 
-<!--
+Mi van az **adatszótárban**? Tulajdonképpen minden olyan handy dolog, ami jól jöhet a kiértékelés és optimalizálás elvégzéséhez: sokféle meta adatok. Többek között innen ismerhető meg egy-egy reláción az egyes oszlopokra mérhető **Selection Cardinality** (`SC(A,r)`), azaz hogy egy közönséges szelekciós lekérésnél (`pl.: SELECT * FROM r WHERE A = 5;`) várhatóan hány rekordot kaphatunk, valamint az **oszlopban várhatóan hány különböző érték** jelenhet meg (`V(A,r)`). Ezek alapján épül fel a **költség-katalógus** is!
 
-<<< TODO >>>
+TO BE CONTINUED...
 
-## Kitekintés
-
-<<< TODO >>>
-
--->
+![WIP](/db/WIP.png)
 
 # Feladatsor
 

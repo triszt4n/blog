@@ -189,3 +189,5 @@ Házi feladatként feladom a könyv 225. oldalán található Fizikai szervezés
 Amire órán nem volt idő. Érdemes megnézni ZH előtt a tankönyv hátuljában lévő feladatokat, legtöbbjük elég jól felkészít a ZH-ban előkerülő dolgokra. Valamint érdemes a sűrű + ritka index kombinációk előnyein és hátrányain komolyan elgondolkodni (több keresési kulcs alapján történő keresés, okos adatszervezés).
 
 Ha találtok számotokra tetsző feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu) No stress.
+
+## Megoldások (ÚJ!)
