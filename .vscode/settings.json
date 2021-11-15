@@ -16,5 +16,7 @@
     "source.organizeImports": true,
     "source.formatDocument": true,
     "source.fixAll.eslint": true
-  }
+  },
+  "spellright.language": ["de"],
+  "spellright.documentTypes": ["latex", "plaintext"]
 }

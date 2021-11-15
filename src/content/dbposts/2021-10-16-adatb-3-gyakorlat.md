@@ -191,3 +191,11 @@ Amire órán nem volt idő. Érdemes megnézni ZH előtt a tankönyv hátuljába
 Ha találtok számotokra tetsző feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu) No stress.
 
 ## Megoldások (ÚJ!)
+
+###### 4. feladat megoldása:
+
+![adatb3solution1.png](/db/post3/adatb3solution1.png)
+
+###### 5. feladat megoldása:
+
+![adatb3solution2.png](/db/post3/adatb3solution2.png)

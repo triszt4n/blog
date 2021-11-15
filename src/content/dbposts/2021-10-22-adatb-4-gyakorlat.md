@@ -32,17 +32,42 @@ Előző alkalommal [megismerkedtünk azzal, miként is szerveződik meg fizikai 
 
 Most egy okoskodós részéhez érünk a [DBMS](/db/2021-08-03-adatb-1-gyakorlat/#dbms)-nek: Visszatérünk a _Lekérdezés feldolgozó_ egységhez, és annak a bonyolult belső működését fogjuk közelebbről megvizsgálni, ugyanis az optimalizáló algoritmusaitól fognak függeni leginkább a _bonyolult lekérések_ visszatérésének idejei. ⛳️
 
+## A lekérdezés feldolgozása
+
+Ezen paragrafus tulajdonképpen ismétlés, azonban most a _Lekérdezésfeldolgozó_ modelljét finomítjuk, és újabb köztes munkafolyamatokat fogunk megismerni.
+
 ![dbms](/db/post1/dbms.png)
 
-<div class="caption">ábra: átlag DBMS működési sémaábrája</div>
+<div class="caption">ábra: átlag DBMS működési sémaábrája, jelenleg már az ábra világoskék egységeivel is foglalkozunk!</div>
 
-_Disclaimer_: jelenleg már az ábra világoskék egységeivel is foglalkozunk!
+Oké: leküldjük a kalkulusban (tehát SQL-ben) megfogalmazott kérésünket a DBMS-nek, és a DBMS azzal kihalássza az adatállományból azt, ami nekünk kell. Arról viszont hajlamosak vagyunk megfeledkezni, hogy ez **nem** ebből a két lépésből áll, hanem:
+
+1. a **kalkulusból** ugyanis először a feldolgozó fordít magának **relációs algebrai kifejezést** (ez a _logikai műveletsorozat_)
+1. majd a **relalg kifejezést** okosan optimalizálja (erre különféle heurisztikákkal élhet, DBMS-e válogatja), azaz:
+   1. kiválasztja a **megfelelő fizikai algoritmusokat** a _logikai műveletekre_ (pl.: joinok és szelekciók során hogy kezelje majd a végrehajtó modul a blokkokat)
+   1. meghatározza a legokosabb **sorrendjét a logikai műveleteknek**
+   1. végül az egészet **munkafolyamatba** teszi (materializáció és pipeline lehet ismert)
+1. a fentiek eredménye egy **végrehajtási terv**, amelyet ki kell értékelni (van-e értelme azt választani), majd végrehajtani, azaz sorfordítani a _logikai műveleteket fizikaira_, azaz **I/O műveletekre** (pl.: READ, WRITE stb.)
+
+Tehát így jutunk el a bonyolult SQL kifejezésünkből a sík egyszerű I/O műveletek soráig. Minket leginkább az érdekel, és azt szeretnénk megvizsgálni, hogy az optimalizálás során milyen algoritmusok, milyen munkafolyamatok léteznek, és általában milyen heurisztikával élnek a DBMS-ek, amikor újrasorrendezik a logikai műveleteket. Ezekről olvashatsz a tankönyvben is. _A gyakorlat csupán a fizikai algoritmusokkal foglalkozik._
+
+## Adatszótár
 
 Mi van az **adatszótárban**? Tulajdonképpen minden olyan handy dolog, ami jól jöhet a kiértékelés és optimalizálás elvégzéséhez: sokféle meta adatok. Többek között innen ismerhető meg egy-egy reláción az egyes oszlopokra mérhető **Selection Cardinality** (`SC(A,r)`), azaz hogy egy közönséges szelekciós lekérésnél (`pl.: SELECT * FROM r WHERE A = 5;`) várhatóan hány rekordot kaphatunk, valamint az **oszlopban várhatóan hány különböző érték** jelenhet meg (`V(A,r)`). Ezek alapján épül fel a **költség-katalógus** is!
 
-TO BE CONTINUED...
+## Algoritmusok
 
-![WIP](/db/WIP.png)
+Az elméleti összefoglaló ezen részét kézírásba foglaltam, és olyan formátumban mutatom be az egyes algoritmusokat, ahogy a gyakorlaton is bemutattam (kérdezőfával).
+
+### Szelekció algoritmusai és azok lépésszámai
+
+![queryopt1.png](/db/post4/queryopt1.png)
+
+### Illesztés algoritmusai és azok lépésszámai
+
+![queryopt1.png](/db/post4/queryopt1.png)
+
+## Egyéb műveletek algoritmusai
 
 # Feladatsor
 
@@ -105,3 +130,13 @@ Számítsd ki az illesztés költségét, ha elsődleges, B\*-fa struktúrájú 
 Amire órán nem volt idő. Érdemes megnézni ZH előtt a tankönyv hátuljában lévő feladatokat, legtöbbjük elég jól felkészít a ZH-ban előkerülő dolgokra. Többször átnézni és megérteni, hogy melyik join algoritmus hány iterációt végez!
 
 Ha találtok számotokra tetsző feladatot a könyvben, megoldjátok, elküldhetitek nekem a megoldásotokat, hogy rápillantsak, jónak tűnik-e. Ide emailezz: [piller.trisztan@db.bme.hu](mailto:piller.trisztan@db.bme.hu) No stress.
+
+## Megoldások (ÚJ!)
+
+###### 3. feladat megoldása újra:
+
+![adatb4solution1.png](/db/post4/adatb4solution1.png)
+
+###### 4. feladat megoldása:
+
+![adatb4solution2.png](/db/post4/adatb4solution2.png)
