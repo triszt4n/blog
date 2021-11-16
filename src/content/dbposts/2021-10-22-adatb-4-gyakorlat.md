@@ -49,7 +49,7 @@ Oké: leküldjük a kalkulusban (tehát SQL-ben) megfogalmazott kérésünket a 
    1. végül az egészet **munkafolyamatba** teszi (materializáció és pipeline lehet ismert)
 1. a fentiek eredménye egy **végrehajtási terv**, amelyet ki kell értékelni (van-e értelme azt választani), majd végrehajtani, azaz sorfordítani a _logikai műveleteket fizikaira_, azaz **I/O műveletekre** (pl.: READ, WRITE stb.)
 
-Tehát így jutunk el a bonyolult SQL kifejezésünkből a sík egyszerű I/O műveletek soráig. Minket leginkább az érdekel, és azt szeretnénk megvizsgálni, hogy az optimalizálás során milyen algoritmusok, milyen munkafolyamatok léteznek, és általában milyen heurisztikával élnek a DBMS-ek, amikor újrasorrendezik a logikai műveleteket. Ezekről olvashatsz a tankönyvben is. _A gyakorlat csupán a fizikai algoritmusokkal foglalkozik._
+Tehát így jutunk el a bonyolult SQL kifejezésünkből a sík egyszerű I/O műveletek soráig. Minket leginkább az érdekel, és azt szeretnénk megvizsgálni, hogy az optimalizálás során milyen algoritmusok, milyen munkafolyamatok léteznek, és általában milyen heurisztikával élnek a DBMS-ek, amikor újrasorrendezik a logikai műveleteket. Ezekről olvashatsz a tankönyvben is. _A gyakorlat csupán a fizikai algoritmusokkal foglalkozik._ 🧪
 
 ## Adatszótár
 
@@ -61,13 +61,15 @@ Az elméleti összefoglaló ezen részét kézírásba foglaltam, és olyan form
 
 ### Szelekció algoritmusai és azok lépésszámai
 
-![queryopt1.png](/db/post4/queryopt1.png)
+![queryopt1.jpg](/db/post4/queryopt1.jpg) még dolgozom rajta...
 
 ### Illesztés algoritmusai és azok lépésszámai
 
-![queryopt1.png](/db/post4/queryopt1.png)
+(Az egyes algoritmusok lépésszámánál feltételezzük, hogy a memóriába csak 1-1 blokk fér be)
 
-## Egyéb műveletek algoritmusai
+![queryopt2.jpg](/db/post4/queryopt2.jpg) még dolgozom rajta...
+
+Előjöhet az a gondolat a legtöbbjüknél, hogy mi van, ha nem csak 1-1 blokkot tudunk a memóriában tárolni a joinok során, ilyenkor pedig legtöbbjüknél a [brbs.png](/db/post4/brbs.png) képlet lehet használható. Hiszen gondoljunk csak bele, elég csupán beolvasni mindkét relációt egyszer a memóriába, utána akármilyen CPU műveletet végezhetünk velük, az ~0 millisecundumos idővel elvégezhető. 💡
 
 # Feladatsor
 
@@ -133,10 +135,30 @@ Ha találtok számotokra tetsző feladatot a könyvben, megoldjátok, elküldhet
 
 ## Megoldások (ÚJ!)
 
-###### 3. feladat megoldása újra:
+### 4. feladat megoldása
 
-![adatb4solution1.png](/db/post4/adatb4solution1.png)
+Okosan ki tudjuk számolni blocking factor ésatöbbi segítségével azt, hogy
 
-###### 4. feladat megoldása:
+- R reláció 5000 blokkból áll
+- S reláció 1154 blokkból áll
 
-![adatb4solution2.png](/db/post4/adatb4solution2.png)
+Valamint egy jólirányzott:
+
+![hti.png](/db/post4/hti.png)
+
+...képlet használával pedig kiszámolható, hogy 2 szintes lesz mindkét esetben a B*-fánk. Azaz minden rekordelérésnél 2 blokkot kell a B*-fából, és +1-et kell olvasni az adatblokkokból (összesen 3-at).
+
+Ugyebár a fentiekből már ismerős lehet, hogyha **indexelt illesztést** használunk
+
+- R reláció a külső hurokban van, akkor képletünk a lenti lesz (végeredmény: 425000 lépés)
+  - ![br.png](/db/post4/br.png)
+- S reláció a külső hurokban van, akkor képletünk a lenti lesz (végeredmény: 46154 lépés, ő nyer)
+  - ![bs.png](/db/post4/bs.png)
+
+Viszont ha az optimalizáló nem csak **indexelt illesztést** választhatna ezeken a relációkon, mi juthat eszünkbe? Vegyük figyelembe a feladat ezen mondatát: _"...ha **elsődleges**, B\*-fa struktúrájú indexeket használhatunk a join attribútumok szerinti rekordelérésre..."_ Hoppá! Hiszen **elsődleges** az index mindkét reláción ÉS (fontos hogy ÉS) az mindkét index éppenhogy az alapján az attribútum alapján épült, amit most a joinban is használunk!
+
+Fordítsuk le magyarra mégegyszer: A join közös attribútuma legyen `A`. R reláción van egy B*-fa, aminek az `A` attribútum a keresési kulcsa. S reláción van egy B*-fa, aminek az `A` attribútum a keresési kulcsa. Mindkét B\*-fa elsődleges index. Az elsődleges index definíciója pedig pontosan az, hogy az indexrekordok olyan olvasását teszi lehetővé, hogy az olvasott sorrend megegyezik az adatblokkok tárolási sorrendjével -> Az adatállományban a rekordok éppen az `A` alapján vannak **rendezve**.
+
+Emeljük ki a tényt, hogy **rendezett** az adatállományunk. Ez a tény lehetőséget ad arra, hogy **merge join**-t (összefésüléses illesztést) használjunk az indexeltek helyett! 🎊 🎉
+
+**Merge join** esetén pedig a képletünk sokkal egyszerűbb lesz, csupán a két reláció blokkjainak számát kell összeadnunk (végeredmény: 6154 lépés, ő nyer végül), hiszen a fésüléses join csak megyeget a blokkokon és fésülgeti őket, ha van egyezés `A` attribútum alapján.

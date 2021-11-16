@@ -192,10 +192,6 @@ Ha találtok számotokra tetsző feladatot a könyvben, megoldjátok, elküldhet
 
 ## Megoldások (ÚJ!)
 
-###### 4. feladat megoldása:
+### 5. feladat megoldása
 
-![adatb3solution1.png](/db/post3/adatb3solution1.png)
-
-###### 5. feladat megoldása:
-
-![adatb3solution2.png](/db/post3/adatb3solution2.png)
+![adatb3solution.jpg](/db/post3/adatb3solution.jpg)

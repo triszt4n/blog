@@ -180,11 +180,11 @@ Következő órára az [elméleti összefoglalót](http://localhost:8000/db/2021
 
 Az óra végén pár sorkalkulus sajnos lemaradt, illetve nem volt idő az oszlopkalkulusok tisztázására (sorkalkulusból könnyen előállítható az oszlopkalkulus, nincs pánikra ok).
 
-#### d) Melyek azok a szakok, amiket csak egy-egy egyetemen oktatnak?
+### d) Melyek azok a szakok, amiket csak egy-egy egyetemen oktatnak?
 
 ![2d](/db/post2/2d.jpg)
 
-#### e) Melyik a legrégebben alapított és támogatott egyetem?
+### e) Melyik a legrégebben alapított és támogatott egyetem?
 
 ![2e](/db/post2/2e.jpg)
 
@@ -195,3 +195,18 @@ Végül pedig erre a feladatra a kész oszlopkalkulusos megoldást mutatom meg, 
 - Kicsit rövidebb a "kiválasztásos" részünk, ugyanis itt már akár az `Á(e,x)` tartalmazási kritériumba be lehet illeszteni a kikeresendő egyetemek nevére való oszlopváltozót.
 - Itt már nem egy N-es sorra kell az univerzális kvantort (`∀`) használni, hanem egyes oszlopokra, és így indexelésre sincs szükség.
 - Házi feladatként próbáld meg magadnak átalakítani a többi sorkalkulusodat is oszlopkalkulusra, hogy a kezed is megszokja a formalizálás módszerét.
+
+### A → B
+
+A gyakorlaton és itt a megoldások között is gyakran használom az implikációt (**→** karakterrel jelölt logikai operátor). A dolog BSZ1/2-ből, Analízisből lehet ismert, mint amikor egy tételt fogalmazunk meg, pl.: Ha egy egyszerű gráf síkba rajzolható, akkor 4 színnel színezhető. Ezt a tételt ha kicsit átírjuk: { G gráf síkba rajzolható } → { G gráf 4 színezhető }. A mondat két oldalán egy-egy logikai kifejezés van, amik igazak vagy hamisak lehetnek.
+
+Érdemes lehet megnézni, hogy milyen is a A → B logikai formula igazságtáblája:
+
+| A   | B   | A → B |
+| --- | --- | ----: |
+| 0   | 0   |     1 |
+| 0   | 1   |     1 |
+| 1   | 0   |     0 |
+| 1   | 1   |     1 |
+
+Fentiekből megállapíthatjuk, hogy a A → B logikai formula megegyezik a ¬A v B (azaz `(NOT A) OR B`) formulával, amit habár könnyebb megjegyezni, attól még tök jól jöhet az implikáció operátora, hiszen könnyebb vele szavakban kifejezni, amit akarunk: "ha a h sor H-beli, akkor még muszáj a h[1]-nek x[1]-gyel egyenlőnek lenni (egyébként eldobjuk)" stb.
