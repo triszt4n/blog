@@ -198,7 +198,7 @@ Végül pedig erre a feladatra a kész oszlopkalkulusos megoldást mutatom meg, 
 
 ### A → B
 
-A gyakorlaton és itt a megoldások között is gyakran használom az implikációt (**→** karakterrel jelölt logikai operátor). A dolog BSZ1/2-ből, Analízisből lehet ismert, mint amikor egy tételt fogalmazunk meg, pl.: Ha egy egyszerű gráf síkba rajzolható, akkor 4 színnel színezhető. Ezt a tételt ha kicsit átírjuk: { G gráf síkba rajzolható } → { G gráf 4 színezhető }. A mondat két oldalán egy-egy logikai kifejezés van, amik igazak vagy hamisak lehetnek.
+A gyakorlaton és itt a megoldások között is gyakran használom az implikációt (**→** karakterrel jelölt logikai operátor). A dolog BSZ1/2-ből, Analízisből lehet ismert, mint amikor egy tételt fogalmazunk meg, pl.: _Ha egy egyszerű gráf síkba rajzolható, akkor 4 színnel színezhető_. Ezt a tételt ha kicsit átírjuk: { G gráf síkba rajzolható } → { G gráf 4 színezhető }. A mondat két oldalán egy-egy logikai kifejezés van, amik igazak vagy hamisak lehetnek.
 
 Érdemes lehet megnézni, hogy milyen is a A → B logikai formula igazságtáblája:
 
@@ -210,3 +210,5 @@ A gyakorlaton és itt a megoldások között is gyakran használom az implikáci
 | 1   | 1   |     1 |
 
 Fentiekből megállapíthatjuk, hogy a A → B logikai formula megegyezik a ¬A v B (azaz `(NOT A) OR B`) formulával, amit habár könnyebb megjegyezni, attól még tök jól jöhet az implikáció operátora, hiszen könnyebb vele szavakban kifejezni, amit akarunk: "ha a h sor H-beli, akkor még muszáj a h[1]-nek x[1]-gyel egyenlőnek lenni (egyébként eldobjuk)" stb.
+
+Ami még fontos lehet az implikációval kapcsolatosan, hogy nem szabad összetéveszteni az ekvivalenciával (**↔**), mert az oda-vissza működik, nem csak oda! Az ekvivalenciát matematikában általában az "akkor és csak akkor, ha..." vagy "pontosan akkor, ha..." mondatrészekkel szokás kifejezni, míg a sima implikációt egyszerűen a "ha ..., akkor ..." formában tudjuk megfogalmazni. Példa az ekvivalencia fogalmazásmódjára: _Egy összefüggő gráfban akkor és csak akkor létezik Euler-kör, ha minden csúcsának fokszáma páros_, máshogy írva: { G összefüggő gráf, minden csúcsának fokszáma páros } ↔ { G gráfban létezik Euler-kör }.
