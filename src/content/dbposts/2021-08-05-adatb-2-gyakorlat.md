@@ -178,7 +178,73 @@ Következő órára az [elméleti összefoglalót](http://localhost:8000/db/2021
 
 ## Megoldások (ÚJ!)
 
-Az óra végén pár sorkalkulus sajnos lemaradt, illetve nem volt idő az oszlopkalkulusok tisztázására (sorkalkulusból könnyen előállítható az oszlopkalkulus, nincs pánikra ok).
+> **Megjegyzés**: Lesznek itt bonyolult matematikai magyarázatok, lesznek azok mellé az én konyhanyelven szült gondolataim, amik segítenek begyakorolni a kalkulussal való gondolkodást (főként a vastagon szedett kifejezések a konyhanyelven kitalált kifejezések, viszont nagyjából megfogják, mi a célja egy-egy formulának). 🧩
+
+> Fontos amúgy (mert úgy véltem felfedezni, hogy összekeveredhet a fejetekben a két dolog), hogy a sorkalkulusnak az eredménye egy sorokból álló halmaz, eredményhalmaznak is hívhatjuk. Viszont amit mi x-nek nevezünk a kifejezésekben a | karakter bal oldalán, az nem az eredményhalmaz, hanem egy-egy eleme. Matematikailag úgy olvasható minden kifejezés: „Egy x sor benne van az eredményhalmazban, ha [illeszd be ide a | karakter másik oldalán lévő kifejezést].” Például az első kifejezésnél lentebb: „Egy x sor benne van az eredményhalmazban, ha létezik olyan u 2 oszlopos dolog, ami benne van Á relációban ÉS ennek az u-nak az 1. oszlopának értéke azonos a vizsgált x 1. oszlopának értékével.” Így pl.: ha az x pl. [ Cirmos ], akkor az nincs benne az eredményhalmazban, mert nem találnánk olyan u 2 oszlopos dolgot, ami benne lenne Á-ban és még Cirmos lenne az 1. oszlopának értéke. Viszont ha x pl. [ BME ] lenne, akkor az már okés, mert találunk egy u 2 oszlopos dolgot (pl. [ BME, 1782 ]) ami benne van az Á-ban, és még a BME-vel azonos lesz az 1. oszlopának értéke. 👌
+
+### a) Melyek az államilag nem támogatott egyetemek?
+
+­Az órai megoldás 1. része:
+
+![sol1.png](/db/post2/sol1.png)
+
+Azt mondjuk, hogy „az 1 oszlopos x lesz a megoldásunk, amibe akkor kerül érték, ha létezik legalább egy 1 oszlopos sor, ami benne van az Á táblázatban ÉS az ismeretlen x 1. oszlopa (azaz egyeteme) ennek a talált sornak az 1. oszlopával (egyetemével) legyen azonos”. Röviden még egyszer: ha van u, ami Á-beli, akkor annak az egyetemét **válogassuk ki**.
+
+Természetesen az órai megoldásnak csak az 1. része ez a kifejezés: ugyanis ez a kifejezés csupán **kiválogatja** nekünk az összes olyan sort (illetve csak az egyetemeket), ami benne van Á relációban.
+
+Nem kellene valahova egy negálás, hogy csak eredményként olyan x-ek jöjjenek elő, amik nem az Á-ban vannak? Jól látod, viszont az Á komplementere egy végtelen nagy halmaz, amiben van KONKRÉTAN akármi (pl.: cicanevek, lakcímek, minden, ami nem Á-ban lévő 1 oszlopos sor). Úgyhogy akkor kéne nekünk egy értelmes és _nagyobb halmaz_, amiben ott van az összes egyetem. Ez pedig csupán a H reláció lehet, emiatt viszont tovább kell bonyolítsuk a kifejezésünket. 🛠
+
+Az órai megoldás 2. része:
+
+![sol2.png](/db/post2/sol2.png)
+
+Ez sem a végső megoldást adja meg, csupán ezzel a kifejezéssel **kiválogatjuk** az összes olyan sort (h[2] ugye az egyetemeket jelenti, így igazából az egyetemeket válogatjuk ki), ami benne van H relációban. Ez az a fenti nagyobb halmaz.
+
+Az órai megoldás 3. része (egyben a megoldás a kérdésre):
+
+![sol3.png](/db/post2/sol3.png)
+
+Most van az, hogy **kiválogatjuk** a H reláció egyetemeit, viszont azt nem engedjük, hogy az x sorok Á-beliek is legyenek. X-ek lehetnek az egyetem oszlopban felvett értékeik alapján H-beliek, viszont Á-beliek nem!
+
+**Tanulság**: megismertük, hogy milyen formában lehet ilyen kiválogatásokat megírni, ahol valamely oszlop(ok) értéke(i) alapján egyezőséget keresünk (itt most az egyetem oszlop alapján csak)
+
+### b) Kik azok a hallgatók, akiknek nincs hallgatói jogviszonyuk államilag támogatott egyetemmel? (Feltételezzük, hogy egy hallgató egyetlen felsőoktatási intézmény diákja.)
+
+Órán ez volt a megoldás:
+
+![sol4.png](/db/post2/sol4.png)
+
+Induljunk ki egy másik megoldásból:
+
+![sol5.png](/db/post2/sol5.png)
+
+Induljunk egy ilyen gondolattal: „Kikeresem azokat a rekordokat a Hallgatók név oszlopából…”, ez az első felét mutatja, amikor olyan x-eket akarok kiszedni, amik a hallgatók neveit tartalmazzák.
+
+Egy új kvantort használunk: univerzálisat, mert minden Á-beli u-ra szeretnénk, hogy azoknak az egyeteme ne legyen ugyanaz, mint a gyűjtött hallgatónak. Ha maradt volna az egzisztenciális, akkor csak annyit mondanánk, hogy „legyen legalább egy Á-beli u, aminek nem azonos az egyeteme az én hallgatóméval”. Ez így kevés, gondoljunk csak bele. 🧠
+
+Eddig kb. minden mondatomat úgy kezdtem, hogy „Á-beli u”, ezért is használjuk az implikációt. Mindig vegyük számításba az implikáció lehetőségét! ☝️
+
+Így úgy hangzik a dolog, hogy „minden 2 oszlopos u sorra legyen igaz, hogyha Á-beli, akkor viszont annak az egyeteme ne legyen azonos az én hallgatóméval”.
+
+Kicsit fun: van egy ilyen tétel:
+
+![sol6.png](/db/post2/sol6.png)
+
+Tehát a létezikes kifejezések átírhatóak mindenes kifejezésekre, a lényeg, hogy a kvantort cserélni kell, és a kvantor jobb oldalán lévő formulát pedig tagadni kell. Levezethető, hogy a fenti adott kifejezés ugyanaz, mint az órai megoldás (először átalakítom az implikációt az egyszerűbb logikai operátorokra, aztán átalakítom a kvantort és a jobb oldalát tagadom (De Morgan-azonosság!)):
+
+![sol7.png](/db/post2/sol7.png)
+
+Olvasd el lentebb az [implikációról szóló szemelvényt](/db/2021-08-05-adatb-2-gyakorlat/#a-→-b), ha többet szeretnél belőle érteni!
+
+### c) Melyek azok a szakok, amelyeket legalább két egyetemen oktatnak?
+
+Órai megoldás:
+
+![sol8.png](/db/post2/sol8.png)
+
+Itt azt kell igénybe vennünk, amit a relalgnál is csináltunk: ott lemásoltuk a relációt és össze Descartes-szoroztuk őket. Itt erre nincs lehetőségünk, viszont tudunk bevezetni egy arbitrális t változót, amit összhatásba tudunk hozni a h-val.
+
+Eddig az okés, hogy t és h is H-beliek, és h-nak a szakjait szedjük ki x-ekbe. Viszont a `t[3] = x[1] (= h[3])` rész a legfontosabb, ez a rész köti össze a két "_létezikes_" nagyobb részeket. Különben csak két különálló egzisztenciális kvantoros formulából állna az egész kifejezés, amik egymástól függetlenek. Ezzel az egyenlőséggel alakítjuk ki a kapcsolatot a két létezikes rész között. Ugyanis amíg a h-s rész feltételez csak annyit, hogy h H-beli, addig a t-s rész azt mondja, hogy a t-nek az egyeteme nem ugyanaz, mint a h-nak, de a szakja IGEN!
 
 ### d) Melyek azok a szakok, amiket csak egy-egy egyetemen oktatnak?
 

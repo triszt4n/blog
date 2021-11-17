@@ -57,19 +57,72 @@ Mi van az **adatszótárban**? Tulajdonképpen minden olyan handy dolog, ami jó
 
 ## Algoritmusok
 
-Az elméleti összefoglaló ezen részét kézírásba foglaltam, és olyan formátumban mutatom be az egyes algoritmusokat, ahogy a gyakorlaton is bemutattam (kérdezőfával).
-
 ### Szelekció algoritmusai és azok lépésszámai
 
-![queryopt1.jpg](/db/post4/queryopt1.jpg) még dolgozom rajta...
+Fontos definíció mindenek előtt: Az **elsődleges index** olyan index, amely az indexrekordok olyan olvasását teszi lehetővé, hogy az olvasott sorrend megegyezik az adatblokkok tárolási sorrendjével -> Az adatállományban a rekordok éppen az `A` alapján vannak **rendezve**.
+
+Az egyik kérdés az optimalizálásnál, hogy amikor egy szűrést alkalmazunk valamilyen attribútuma (nevezzük `A`-nak a keresési attribútumot) alapján egy relációra, akkor milyen algoritmust használhatunk a rekordok **átkeresésére**. Egy dolgot jegyezzünk meg még: általában a következő képlet segít kitalálni, mit kell számolni:
+
+![e.png](/db/post4/e.png)
+
+Tehát az átlag költséget legtöbbször az első találatig és az összes többi összegyűjtéséig tartó idővel számoljuk. Egy kérdezőfa segítségével vezetjük le a megfelelő és használható algoritmusok listáját.
+
+#### Egyenlőség alapú szelekciók
+
+- Q: Van-e index a keresett attribútum alapján?
+  - A: Nem. → Q: Adatblokkok folyamatosan helyezkednek el ÉS a reláció `A` szerint rendezett?
+    - A: Nem. Ekkor csak a **lineáris keresést** használhatjuk. → Q: Kulcs az attribútum, ami alapján keresünk?
+      - A: Nem. Ekkor nem egyértelmű, hány találatunk lesz. Átlagosan az összes blokkot vizsgáljuk.
+        - ![b.png](/db/post4/b.png)
+      - A: Igen. Ekkor egyértelmű, ha megvan az első találat, már végeztünk (hiszen unique a kulcs). Min: 1, Max: összes blokkot olvasnunk kell, átlagosan:
+        - ![1br.png](/db/post4/1br.png)
+    - A: Igen. Ekkor a **bináris keresést** is használhatjuk. → Q: Kulcs az attribútum, ami alapján keresünk?
+      - A: Nem. Ekkor a fenti átlag költség számolós képletet így alakíthatjuk át:
+        - ![binary.png](/db/post4/binary.png)
+      - A: Igen. Ekkor az átlag költség egyszerűsödik:
+        - ![binary2.png](/db/post4/binary2.png)
+  - A: Igen. → Q: Elsődleges az index? (`A` szerint rendezett az adatállomány?)
+    - A: Nem. (azaz másodlagos) → Q: Kulcs az attribútum, ami alapján keresünk?
+      - A: Nem. Ekkor bizony alkalmazzuk szépen a fenti átlag költség képletünket. HTi az index szintszáma. Az első találat bizony HTi + 1 lesz, viszont itt nem osztunk a blocking factorral a többi találat megtalálására, mert mi van, ha a többi rekord más-más blokkokban vannak? Ehhez az első találattól jobbra lévő blokkokból Selection Cardinality darabszámú blokkot fogunk **átlagosan** megnézni még.
+        - ![sec.png](/db/post4/sec.png)
+      - A: Igen. Úgyhogy akkor elég lemenni az első találatig. Vegyük észre, hogy a fenti képletben nincs ott a -1, viszont itt van egy +1, ennek indoka, hogy nem elég átmenni az index szintjein, utána még egy olvasás kell az adatállományból való kiolvasásra. Ezért is HTi + 1.
+        - ![bfa2.png](/db/post4/bfa2.png)
+    - A: Igen. → Q: Kulcs az attribútum, ami alapján keresünk?
+      - A: Nem. Ekkor bizony alkalmazzuk szépen a fenti átlag költség képletünket: (HTi az index szintszáma)
+        - ![bfa.png](/db/post4/bfa.png)
+      - A: Igen. Ekkor viszont nincs szükség a többi elem megtalálására.
+        - ![bfa2.png](/db/post4/bfa2.png)
+
+#### Összehasonlítás alapú szelekciók
+
+Ez az ág nem könnyen magyarázható itt ilyen kérdés-válasz formában, inkább a könyv megfelelő fejezeteit kéne átolvasni. Itt is szóba jön, hogy elsődleges-e az index, vagy másodlagos...
 
 ### Illesztés algoritmusai és azok lépésszámai
 
-(Az egyes algoritmusok lépésszámánál feltételezzük, hogy a memóriába csak 1-1 blokk fér be)
+(Az egyes algoritmusok lépésszámánál feltételezzük, hogy a memóriába csak 1 blokk fér be)
 
-![queryopt2.jpg](/db/post4/queryopt2.jpg) még dolgozom rajta...
+- **Nested** loop join
+  - Worst case:
+    - ![brnr.png](/db/post4/brnr.png)
+  - Egyik vagy mindkettő reláció elfér a memóriában:
+    - ![brbs.png](/db/post4/brbs.png)
+- **Block nested** loop join (feltéve, hogy 2 blokk is elfér a memóriában, külső ciklusban 1 blokkot beolvasunk, belsőben is 1 blokkot beolvasunk és utána ~0ms a CPU-val a memóriából összehasonlítgatni a blokkok rekordjait)
+  - Worst case:
+    - ![brbrbs.png](/db/post4/brbrbs.png)
+  - Egyik vagy mindkettő reláció elfér a memóriában:
+    - ![brbs.png](/db/post4/brbs.png)
+- **Indexed** nested loop join vagy **Hash join**
+  - Worst case: (**c**: itt az S reláción való indexelt szelekció / hashelt szelekció **átlag költsége**)
+    - ![br.png](/db/post4/br.png)
+  - Egyik vagy mindkettő reláció elfér a memóriában:
+    - ![brbs.png](/db/post4/brbs.png)
+- **Merge** join
+  - Worst case:
+    - ![merge.png](/db/post4/merge.png)
+  - Már előre rendezve vannak a relációk:
+    - ![brbs.png](/db/post4/brbs.png)
 
-Előjöhet az a gondolat a legtöbbjüknél, hogy mi van, ha nem csak 1-1 blokkot tudunk a memóriában tárolni a joinok során, ilyenkor pedig legtöbbjüknél a [brbs.png](/db/post4/brbs.png) képlet lehet használható. Hiszen gondoljunk csak bele, elég csupán beolvasni mindkét relációt egyszer a memóriába, utána akármilyen CPU műveletet végezhetünk velük, az ~0 millisecundumos idővel elvégezhető. 💡
+Előjöhet az a gondolat a legtöbbjüknél, hogy mi van, ha nem csak 1-1 blokkot tudunk a memóriában tárolni a joinok során, ilyenkor pedig legtöbbjüknél a ![brbs.png](/db/post4/brbs.png) képlet lehet használható. Hiszen gondoljunk csak bele, elég csupán beolvasni mindkét relációt egyszer a memóriába, utána akármilyen CPU műveletet végezhetünk velük, az ~0 millisecundumos idővel elvégezhető. 💡
 
 # Feladatsor
 
