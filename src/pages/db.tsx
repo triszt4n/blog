@@ -22,7 +22,7 @@ const DbPage: React.FC<PostsQueryProps> = ({ data }) => (
           <FaGift style={{ display: 'inline-block' }} /> Apró kis motiváció a ZH-hoz: érdemes jól meghajtani a ZH-ra
           való készülést, ugyanis a kiemelkedő eredményt (amennyiben először hallgatod a tárgyat) beugrómentességgel
           ajándékozzuk meg a szóbeli vizsgán. A beugrómentességet akármelyik vizsgaalkalmon, viszont a vizsgaidőszakban
-          csupán egyszer lehet felhasználni.
+          csupán egyszer lehet felhasználni. <strong>Vigyetek magatokkal számológépet!</strong>
         </Text>
       </Box>
       <Stack mt={6} spacing={{ base: 16, sm: 12 }} direction="column">

@@ -111,8 +111,8 @@ Ez az ág nem könnyen magyarázható itt ilyen kérdés-válasz formában, ink�
     - ![brbrbs.png](/db/post4/brbrbs.png)
   - Egyik vagy mindkettő reláció elfér a memóriában:
     - ![brbs.png](/db/post4/brbs.png)
-- **Indexed** nested loop join vagy **Hash join**
-  - Worst case: (**c**: itt az S reláción való indexelt szelekció / hashelt szelekció **átlag költsége**)
+- **Indexed** nested loop join vagy
+  - Worst case: (**c**: itt az S reláción való indexelt szelekció **átlag költsége**)
     - ![br.png](/db/post4/br.png)
   - Egyik vagy mindkettő reláció elfér a memóriában:
     - ![brbs.png](/db/post4/brbs.png)
@@ -120,6 +120,11 @@ Ez az ág nem könnyen magyarázható itt ilyen kérdés-válasz formában, ink�
   - Worst case:
     - ![merge.png](/db/post4/merge.png)
   - Már előre rendezve vannak a relációk:
+    - ![brbs.png](/db/post4/brbs.png)
+- **Hash** join
+  - Worst case: (**c**: itt az S reláción való hashelt szelekció **átlag költsége**)
+    - ![br.png](/db/post4/br.png)
+  - Egyik vagy mindkettő reláció elfér a memóriában:
     - ![brbs.png](/db/post4/brbs.png)
 
 Előjöhet az a gondolat a legtöbbjüknél, hogy mi van, ha nem csak 1-1 blokkot tudunk a memóriában tárolni a joinok során, ilyenkor pedig legtöbbjüknél a ![brbs.png](/db/post4/brbs.png) képlet lehet használható. Hiszen gondoljunk csak bele, elég csupán beolvasni mindkét relációt egyszer a memóriába, utána akármilyen CPU műveletet végezhetünk velük, az ~0 millisecundumos idővel elvégezhető. 💡
