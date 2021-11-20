@@ -1,7 +1,7 @@
 import { Box, Heading, Stack, Text } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
-import { FaDatabase, FaGift } from 'react-icons/fa'
+import { FaDatabase } from 'react-icons/fa'
 import Container from '~components/common/container'
 import Layout from '~components/common/layout'
 import SEO from '~components/common/seo'
@@ -17,12 +17,6 @@ const DbPage: React.FC<PostsQueryProps> = ({ data }) => (
         <Text mt={4} fontSize={{ base: 'md', sm: 'lg' }}>
           Ez az oldal az Adatbázisok VITMAB04 tárgy általam vezett gyakorlatának segédleteit gyűjti össze posztok
           formájában. A fenti <FaDatabase style={{ display: 'inline-block' }} /> gomb által juthattok erre az oldalra.
-        </Text>
-        <Text mt={4} fontSize={{ base: 'md', sm: 'lg' }}>
-          <FaGift style={{ display: 'inline-block' }} /> Apró kis motiváció a ZH-hoz: érdemes jól meghajtani a ZH-ra
-          való készülést, ugyanis a kiemelkedő eredményt (amennyiben először hallgatod a tárgyat) beugrómentességgel
-          ajándékozzuk meg a szóbeli vizsgán. A beugrómentességet akármelyik vizsgaalkalmon, viszont a vizsgaidőszakban
-          csupán egyszer lehet felhasználni. <strong>Vigyetek magatokkal számológépet!</strong>
         </Text>
       </Box>
       <Stack mt={6} spacing={{ base: 16, sm: 12 }} direction="column">
