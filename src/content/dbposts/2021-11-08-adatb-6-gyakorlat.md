@@ -76,6 +76,12 @@ Modellezzük ER-diagrammal a problémát. Törekedjünk az átlátható diagramr
 - A. Milyen függőségeket tudunk megállapítani a már ismert specifikációs részletek alapján?
 - B. Milyen további kérdéseket kell tisztázni, hogy a függéshalmaz egyértelműen megállapítható legyen?
 
+Segítség: Armstrong-axiomák és következmények:
+
+![armstrong1.png](/db/post6/armstrong1.png)
+
+![armstrong2.png](/db/post6/armstrong2.png)
+
 ###### 4. feladat: Vizsgáljuk meg az alábbiakat az F függéshalmaz mellett
 
 A Malulukai Egyetemi Foglalórendszer Konzorcium mérnökei a megrendelővel történő egyeztetések során tisztázták, hogy minden épülethez egyetlen címet kell tárolni, akkor is, ha több bejárat van, továbbá minden épület címe különböző. Egy épületen belül lehetnek zárt és nem zárt termek is. Az adatokat kiegészítették a foglalásokat egyedileg azonosító foglalás id (I) attribútummal, majd a feladatot a következő függéshalmazzal modellezték:
