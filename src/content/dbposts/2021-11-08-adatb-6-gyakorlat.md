@@ -16,8 +16,6 @@ exclude: Tartalomjegyzék
 to-heading: 4
 ```
 
-<!--
-
 # Tisztázásképpen...
 
 > Az ismertetők olvasásakor gyakran ütközhettek olyan paragrafusokba, mint ez a paragrafus is (balról behúzott, szegélyezett és szürkén íródott). Ezek megjegyzések, fun factek, ismeretterjesztő bekezdések. Nem kötelező elolvasni, sem a bennük említett dolgokat megtanulni - kivéve ha amúgy is szó volt róla előadáson. Csupán a tudás mélyítéséért, kiegészítésként, avagy extraként szolgálnak, ami fenntarthatja érdeklődéseteket.
@@ -30,7 +28,9 @@ to-heading: 4
 
 [Hivatalos jegyzet/könyv](https://db.bme.hu/~gajdos/Adatbazisok2019.pdf): 9. fejezet ismerendő a gyakorlatra.
 
--->
+# ÚJ: vizsga
+
+Lehetőséged van előre jelentkezni hozzám vizsgázni, ha szeretnél, [ebben a táblázatban](https://triszt4n.xyz/vizsga/).
 
 # Feladatsor
 

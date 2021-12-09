@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, Link, Stack, Text } from '@chakra-ui/react'
 import { graphql } from 'gatsby'
 import React from 'react'
 import { FaDatabase } from 'react-icons/fa'
@@ -17,6 +17,10 @@ const DbPage: React.FC<PostsQueryProps> = ({ data }) => (
         <Text mt={4} fontSize={{ base: 'md', sm: 'lg' }}>
           Ez az oldal az Adatbázisok VITMAB04 tárgy általam vezett gyakorlatának segédleteit gyűjti össze posztok
           formájában. A fenti <FaDatabase style={{ display: 'inline-block' }} /> gomb által juthattok erre az oldalra.
+        </Text>
+        <Text mt={2} fontSize={{ base: 'md', sm: 'lg' }}>
+          Ha nálam szeretnél vizsgázni, van lehetőség, hogy feljegyezhesd magad{' '}
+          <Link href="https://triszt4n.xyz/vizsga/">az ezen a címen is elérhető</Link> táblázatban.
         </Text>
       </Box>
       <Stack mt={6} spacing={{ base: 16, sm: 12 }} direction="column">
