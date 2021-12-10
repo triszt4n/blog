@@ -30,7 +30,7 @@ to-heading: 4
 
 # ÚJ: vizsga
 
-Lehetőséged van előre jelentkezni hozzám vizsgázni, ha szeretnél, [ebben a táblázatban](https://triszt4n.xyz/vizsga/).
+Lehetőséged van előre jelentkezni hozzám vizsgázni, ha szeretnél, [ebben a táblázatban](https://triszt4n.xyz/vizsga).
 
 # Feladatsor
 

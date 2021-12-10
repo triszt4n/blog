@@ -20,7 +20,7 @@ const DbPage: React.FC<PostsQueryProps> = ({ data }) => (
         </Text>
         <Text mt={2} fontSize={{ base: 'md', sm: 'lg' }}>
           Ha nálam szeretnél vizsgázni, van lehetőség, hogy feljegyezhesd magad{' '}
-          <Link href="https://triszt4n.xyz/vizsga/">az ezen a címen is elérhető</Link> táblázatban.
+          <Link href="https://triszt4n.xyz/vizsga">az ezen a címen is elérhető</Link> táblázatban.
         </Text>
       </Box>
       <Stack mt={6} spacing={{ base: 16, sm: 12 }} direction="column">
