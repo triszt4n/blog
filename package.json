@@ -65,7 +65,7 @@
     "utterances-react-component": "1.0.0"
   },
   "devDependencies": {
-    "@types/node": "16.11.17",
+    "@types/node": "16.11.19",
     "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
     "@types/react-helmet": "6.1.5",
