@@ -2,11 +2,5 @@
   "github": {
     "silent": true
   },
-  "redirects": [
-    {
-      "source": "/vizsga",
-      "destination": "https://docs.google.com/spreadsheets/d/106fcbnufRKbiH9rJHgc5uJRRCcP3LoUcGB4v3S6xcHQ/edit?usp=sharing",
-      "permanent": true
-    }
-  ]
+  "redirects": []
 }
