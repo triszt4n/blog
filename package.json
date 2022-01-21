@@ -52,7 +52,7 @@
     "gatsby-remark-responsive-iframe": "5.5.0",
     "gatsby-remark-smartypants": "5.5.0",
     "gatsby-remark-table-of-contents": "1.0.0",
-    "gatsby-remark-vscode": "3.3.0",
+    "gatsby-remark-vscode": "3.3.1",
     "gatsby-source-filesystem": "4.5.2",
     "gatsby-transformer-json": "4.5.0",
     "gatsby-transformer-remark": "5.5.2",
