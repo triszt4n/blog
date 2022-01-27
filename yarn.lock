@@ -2457,10 +2457,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/ubuntu@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/ubuntu/-/ubuntu-4.5.0.tgz#13700f2e34b8dead9c935850e5ef26add9e70cc9"
-  integrity sha512-PytR+FgXPPK+UNrLNhYucrNXewS9b4YOJpS2oYw4dfJq+5iyG8iV6CfwToy2UOVSOmBSBhCQ6mJa5Z6BqrGqMw==
+"@fontsource/ubuntu@4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/ubuntu/-/ubuntu-4.5.1.tgz#d7c19e05e99b0c11481223ba851798739c008383"
+  integrity sha512-W+sU95S8Is+EL3+LwyGje+YyqT7bk7lWNhr5dRQkr/q6rzXXZSYG1L/r5JBWC8kDYW4Ag/Lds0nR/L+9cuETeQ==
 
 "@gatsbyjs/reach-router@^1.3.6":
   version "1.3.6"
