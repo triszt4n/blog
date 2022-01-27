@@ -23,7 +23,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "@babel/core": "7.16.10",
+    "@babel/core": "7.16.12",
     "@chakra-ui/gatsby-plugin": "2.0.2",
     "@chakra-ui/icons": "1.1.1",
     "@chakra-ui/react": "1.8.1",
