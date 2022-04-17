@@ -36,7 +36,7 @@
     "framer-motion": "6.2.8",
     "gatsby": "4.8.0",
     "gatsby-plugin-emotion": "7.8.0",
-    "gatsby-plugin-image": "2.8.0",
+    "gatsby-plugin-image": "2.10.1",
     "gatsby-plugin-react-helmet": "5.8.0",
     "gatsby-plugin-react-helmet-canonical-urls": "1.4.0",
     "gatsby-plugin-sharp": "4.8.0",
