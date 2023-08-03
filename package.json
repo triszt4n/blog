@@ -73,7 +73,7 @@
     "@typescript-eslint/parser": "5.12.1",
     "eslint": "8.9.0",
     "eslint-config-blvd": "1.2.1",
-    "eslint-config-prettier": "8.4.0",
+    "eslint-config-prettier": "8.10.0",
     "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-prettier": "4.0.0",
     "prettier": "2.5.1"
